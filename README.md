@@ -1,0 +1,2 @@
+# minecraft-creative-studio-for-java
+ A Minecraft Studio similar to Minecraft Bedrock's Editor with a goal to implement expandable tools opening a lot more creative freedom and opportunities to map builders, redstone engineers, modders, animators, and etc. The Minecraft Creative Studio aims to include and provide most tools that were developed for the past years such as MCEdit, World Painter, etc.
