@@ -1,0 +1,70 @@
+// Mapped Variables for SCSS use cases
+$color: var(--color);
+$color-secondary: var(--color-secondary);
+
+$background: var(--background);
+$background-accent: var(--background-accent);
+$background-secondary: var(--background-secondary);
+$background-secondary-accent: var(--background-secondary-accent);
+
+$use-shadow-color: var(--shadow-color);
+
+$primary-color: var(--primary-color);
+$primary-accent: var(--primary-accent);
+
+$secondary-color: var(--secondary-color);
+$secondary-accent: var(--secondary-accent);
+
+$warn: var(--warn);
+$alert: var(--alert);
+
+$hover-brightness-light: var(--hover-brightness-light);
+$hover-brightness-dark: var(--hover-brightness-dark);
+
+
+// CSS theme sheet
+:root {
+    --color: #000;
+    --color-secondary: #ffffff;
+
+    --background: #ffffff;
+    --background-accent: #e8f2ff;
+    --background-secondary: #0b1624;
+    --background-secondary-accent: #10223b;
+
+    --shadow-color: #002c9262;
+
+    --primary-color: #006eff;
+    --primary-accent: #6f00ff;
+
+    --secondary-color: #00ffc3;
+    --secondary-accent: #ff0090;
+
+    --warn: #ff8c00;
+    --alert: #ff2c2c;
+
+    --hover-brightness-light: brightness(110%);
+    --hover-brightness-dark: brightness(97%);
+}
+
+
+[data-theme="dark"] {
+    --color: #ffffff;
+
+    --background: #0b1624;
+    --background-accent: #10223b;
+
+    --shadow-color: #023f8e60;
+
+    --primary-color: #1468d7;
+    --primary-accent: #6915d7;
+
+    --secondary-color: #25cea6;
+    --secondary-accent: #cd2c87;
+
+    --warn: #d88e32;
+    --alert: #db4c4c;
+
+    --hover-brightness-light: brightness(140%);
+    --hover-brightness-dark: brightness(110%);
+}

@@ -1,13 +1,264 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@import './styling/theme.scss';
+
+// ==========================
+// [    component mixins    ]
+// --------------------------
+//  Declare attributes with 
+//  unset value to disable 
+//  when applied
+// ==========================
+
+
+// # Misc
+@mixin shadow {
+	box-shadow: 0px 5px 15px -15px $use-shadow-color;
+	-webkit-box-shadow: 0px 5px 15px -15px $use-shadow-color;
+	-moz-box-shadow: 0px 5px 15px -15px $use-shadow-color;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+
+// # FUNCTIONAL
+@mixin transform2D ($x, $y) {
+	transform: translateX($x);
+	transform: translateY($y);
+}
+
+@mixin use-focus {
+	&focus,
+	&:focus-within {
+		outline: none;
+	}
+
+	&:focus-visible {
+		outline: 3px solid $primary-color;
+		outline-offset: 3px;
+		transition: none;
+		filter: $hover-brightness-light;
+	}
+}
+
+@mixin transition {
+	transition: 0.2s;
+}
+
+@mixin no-select {
+	user-select: none;
+}
+
+@mixin onHover($class) {
+
+	@if $class ==0 {
+		&:hover {
+			z-index: 0;
+			filter: $hover-brightness-light;
+		}
+	}
+	
+	@else if $class ==1 {
+		&:hover {
+			z-index: 0;
+			filter: $hover-brightness-dark;
+		}
+	}
+}
+
+@mixin onActive {
+
+	&:active {
+		filter: brightness(95%);
+		// transform: scale(0.97, 0.97);
+	}
+}
+
+// element state combinations
+@mixin elementState-A($class) {
+	@include onHover($class);
+	@include onActive();
+}
+
+@mixin mard($margin, $padding) {
+	margin: $margin;
+	padding: $padding;
+}
+
+@mixin wight($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+// # COMPONENT STYLES
+@mixin btn-default {
+	@include mard(5px 10px, 13px 23px);
+	@include elementState-A(0);
+	@include use-focus();
+	// @include shadow;
+
+	// this can apply to both anchor tags and buttons.
+	text-decoration: none;
+	font-size: 14px;
+	color: $color;
+	fill: $color;
+	background-color: $primary-color;
+
+	border: none;
+	border-radius: 2px;
+
+	display: inline-block;
+
+	cursor: pointer;
+}
+
+
+// ==========================
+// [    component styles    ]
+// ==========================
+
+// # Buttons
+.btn {
+	@include btn-default;
+	@include no-select();
+	color: $color;
+	background-color: $background-accent;
+}
+
+.primary {
+	color: $color-secondary;
+	background-color: $primary-color;
+}
+
+.secondary {
+	color: $color-secondary;
+	background-color: $secondary-color;
+}
+
+.warn {
+	color: $color-secondary;
+	background-color: $warn;
+}
+
+.alert {
+	color: $color-secondary;
+	background-color: $alert;
+}
+
+// # Buttons Accent
+.p-accent {
+	color: $color-secondary;
+	background-color: $primary-accent;
+}
+
+.s-accent {
+	color: $color-secondary;
+	background-color: $secondary-accent;
+}
+
+.disabled {
+	cursor: not-allowed;
+	filter: grayscale(100%) brightness(90%);
+	z-index: 0;
+
+	&:hover,
+	&:active,
+	&:focus,
+	&:focus-visible,
+	&:focus-within {
+		cursor: not-allowed;
+		filter: grayscale(100%);
+	}
+}
+
+.ctrl-btn {
+	@include wight(50px, 50px);
+	@include mard(2px, 5px);
+	@include flex-center();
+	border-radius: 100%;
+	font-size: large;
+}
+
+// # Cards
+.card {
+	@include no-select();
+	@include shadow();
+	@include onHover(1);
+	@include mard(10px, 20px);
+
+	z-index: 0;
+	border-radius: 2px;
+	background-color: $background-accent;
+	
+	&:hover {
+		z-index: 0;
+		// transform: translateY(-2px);
+	}
+}
+
+// # Content Breakers | Dividers
+.divider {
+	@include mard(10px, 0.5px);
+	background-color: $color;
+}
+
+
+// ==================================
+// [    Custom Bootstrap Methods    ]
+// ==================================
+
+// # Alignment
+.align {
+	display: flex;
+}
+
+.center {
+	align-items: center;
+	justify-content: center;
+}
+
+// # Fillers
+.fill-view {
+	@include wight(100vw, 100vh);
+}
+
+// # Functions
+.no-select {
+	@include no-select();
+}
+
+.overflow {
+	overflow-y: scroll;
+	
+	/* width */
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+
+// ==============
+// [    root    ]
+// ==============
+
+html {
+	font-family: sans-serif;
+}
+
+body {
+	@include mard(0, unset);
+	color: $color;
+	background-color: $background;
+
+	overflow: hidden;
+}
+
+body.disable-events *:not(.modal) {
+	pointer-events: none;
+}
+
+.viewport {
+	@include wight(100vw, 100vh);
 }
