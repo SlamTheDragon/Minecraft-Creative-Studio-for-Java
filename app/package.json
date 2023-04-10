@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "author": "SLamTheDragon",
-  "main": "main.js",
+  "main": "./main.js",
   "dependencies": {
     "bootstrap": "^5.1.3",
     "http-proxy-middleware": "^2.0.6",

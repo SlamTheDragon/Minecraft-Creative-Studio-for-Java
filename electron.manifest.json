@@ -11,7 +11,7 @@
   "build": {
     "appId": "com.minecraft-creative-studio-for-java.app",
     "productName": "minecraft-creative-studio-for-java",
-    "copyright": "Copyright © 2020",
+    "copyright": "Copyright © 2023",
     "buildVersion": "0.0.0",
     "compression": "maximum",
     "directories": {
