@@ -1,10 +1,7 @@
-﻿using ElectronNET.API;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-using Process;
+using ElectronNET.API;
 
 
-namespace Processes
+namespace Program
 {
     public class Program
     {
@@ -14,13 +11,13 @@ namespace Processes
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
-        
+
         Host.CreateDefaultBuilder(args)
         .ConfigureWebHostDefaults(webBuilder =>
         {
             webBuilder.UseElectron(args);
             webBuilder.UseEnvironment("Development");
-            webBuilder.UseStartup<Startup>();
+            webBuilder.UseStartup<SystemStartup.Startup>();
         });
     }
 }

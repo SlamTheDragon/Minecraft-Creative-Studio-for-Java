@@ -3,8 +3,8 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:30822",
-      "sslPort": 44348
+      "applicationUrl": "http://localhost:46228",
+      "sslPort": 44389
     }
   },
   "profiles": {
@@ -15,10 +15,10 @@
       "workingDirectory": "."
     },
 
-    "minecraft_creative_studio_for_java": {
+    "more_creative_studio_mock_tests": {
       "commandName": "Project",
       "launchBrowser": true,
-      "applicationUrl": "https://localhost:7157;http://localhost:5218",
+      "applicationUrl": "https://localhost:7048;http://localhost:5130",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ASPNETCORE_HOSTINGSTARTUPASSEMBLIES": "Microsoft.AspNetCore.SpaProxy"
