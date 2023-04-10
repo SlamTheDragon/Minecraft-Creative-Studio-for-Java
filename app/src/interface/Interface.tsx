@@ -10,6 +10,7 @@ export default function Interface() {
     const openModal = () => {
         setIsModalOpen(true);
         document.body.classList.add('disable-events');
+        document.addEventListener('keydown', handleEscapeKeyPress);
 
         const outsideElements = document.querySelectorAll('button');
         outsideElements.forEach((element) => {
@@ -17,9 +18,16 @@ export default function Interface() {
         });
 
     };
+
+    const handleEscapeKeyPress = (event: KeyboardEvent) => {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    };
     
     const closeModal = () => {
         setIsModalOpen(false);
+        document.removeEventListener('keydown', handleEscapeKeyPress);
 
         const outsideElements = document.querySelectorAll('button');
         outsideElements.forEach((element) => {
@@ -31,6 +39,7 @@ export default function Interface() {
         document.body.classList.remove('disable-events');
     };
 
+    
     return(
         <>  
             <Modal isOpen={isModalOpen} onClose={closeModal} onMouseEnter={handleMouseEnter}>
@@ -38,9 +47,9 @@ export default function Interface() {
                 <p>Modal content goes here.</p>
             </Modal>
             
-            <div className="viewport">
+            <div className="viewport" style={{overflowY:"scroll"}}>
 
-                <div className="card" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start", padding: "50px", height: "50%" }}>
+                <div className="card" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start", padding: "50px", height: "40%" }}>
                     <h1>
                         Theming
                     </h1>
@@ -74,33 +83,31 @@ export default function Interface() {
                     {/* <Button classItem={"btn disabled"}>Disabled</Button> */}
                 </div>
 
-                <div className="card overflow" style={{height: "10%"}}>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    a <br/>
-                    <Button classItem={"btn"}>a</Button>
+                <div className="card overflow" style={{height: "21%"}}>
+                    <h1>Lorem Ipsum Dolor Sit Amet</h1>
+                    <h2>Lorem Ipsum Dolor Sit Amet</h2>
+                    <h3>Lorem Ipsum Dolor Sit Amet</h3>
+
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet vehicula risus. Praesent tempus consequat nisi in pulvinar. Phasellus velit orci, dictum ut scelerisque ac, condimentum sit amet ligula. Proin convallis interdum diam eleifend dictum. Nullam placerat suscipit gravida. Ut arcu turpis, venenatis a ex nec, elementum condimentum turpis. Nunc fermentum, nulla ut vestibulum blandit, massa augue congue odio, quis tincidunt diam enim ac ante. Pellentesque vestibulum hendrerit augue finibus iaculis. Quisque aliquam in eros nec molestie. Cras ullamcorper vehicula rutrum. Donec vel interdum ante. Nullam ac egestas enim. Maecenas volutpat volutpat vulputate.</p>
+                    <p><strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet vehicula risus. Praesent tempus consequat nisi in pulvinar. Phasellus velit orci, dictum ut scelerisque ac, condimentum sit amet ligula. Proin convallis interdum diam eleifend dictum. Nullam placerat suscipit gravida. Ut arcu turpis, venenatis a ex nec, elementum condimentum turpis. Nunc fermentum, nulla ut vestibulum blandit, massa augue congue odio, quis tincidunt diam enim ac ante. Pellentesque vestibulum hendrerit augue finibus iaculis. Quisque aliquam in eros nec molestie. Cras ullamcorper vehicula rutrum. Donec vel interdum ante. Nullam ac egestas enim. Maecenas volutpat volutpat vulputate.</strong></p>
+                    <p><em>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet vehicula risus. Praesent tempus consequat nisi in pulvinar. Phasellus velit orci, dictum ut scelerisque ac, condimentum sit amet ligula. Proin convallis interdum diam eleifend dictum. Nullam placerat suscipit gravida. Ut arcu turpis, venenatis a ex nec, elementum condimentum turpis. Nunc fermentum, nulla ut vestibulum blandit, massa augue congue odio, quis tincidunt diam enim ac ante. Pellentesque vestibulum hendrerit augue finibus iaculis. Quisque aliquam in eros nec molestie. Cras ullamcorper vehicula rutrum. Donec vel interdum ante. Nullam ac egestas enim. Maecenas volutpat volutpat vulputate.</em></p>
+                    <p><code>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet vehicula risus. Praesent tempus consequat nisi in pulvinar. Phasellus velit orci, dictum ut scelerisque ac, condimentum sit amet ligula. Proin convallis interdum diam eleifend dictum. Nullam placerat suscipit gravida. Ut arcu turpis, venenatis a ex nec, elementum condimentum turpis. Nunc fermentum, nulla ut vestibulum blandit, massa augue congue odio, quis tincidunt diam enim ac ante. Pellentesque vestibulum hendrerit augue finibus iaculis. Quisque aliquam in eros nec molestie. Cras ullamcorper vehicula rutrum. Donec vel interdum ante. Nullam ac egestas enim. Maecenas volutpat volutpat vulputate.</code></p>
+                    <p><abbr title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet vehicula risus. Praesent tempus consequat nisi in pulvinar. Phasellus velit orci, dictum ut scelerisque ac, condimentum sit amet ligula. Proin convallis interdum diam eleifend dictum. Nullam placerat suscipit gravida. Ut arcu turpis, venenatis a ex nec, elementum condimentum turpis. Nunc fermentum, nulla ut vestibulum blandit, massa augue congue odio, quis tincidunt diam enim ac ante. Pellentesque vestibulum hendrerit augue finibus iaculis. Quisque aliquam in eros nec molestie. Cras ullamcorper vehicula rutrum. Donec vel interdum ante. Nullam ac egestas enim. Maecenas volutpat volutpat vulputate.">hover me</abbr></p>
+                </div>
+
+                <div className="card">
+                    <h1>Card A</h1>
+                    <div className="card c-item">Card Inner</div>
+                    <Button classItem={"btn primary"}>Button</Button>
+                </div>
+                <div className="card c-item">
+                    <h1>Card B</h1>
+                    <Button classItem={"btn primary"}>Button</Button>
+                    <Button classItem={"btn primary"}>Button</Button>
+                </div>
+                <div className="card">
+                    <h1>Card C</h1>
+                    <Button classItem={"btn primary"}>Button</Button>
                 </div>
 
             </div>

@@ -7,7 +7,6 @@
 	"author": "",
 	"singleInstance": false,
 	"environment": "Production",
-	"entryPoint": "./main.js",
 	"build": {
 		"appId": "com.minecraft-creative-studio-for-java.app",
 		"productName": "minecraft-creative-studio-for-java",
@@ -15,7 +14,8 @@
 		"buildVersion": "0.0.1",
 		"compression": "maximum",
 		"directories": {
-			"output": "../../../bin/Desktop"
+			"output": "../../../bin/Desktop",
+			"buildResources": "Assets"
 		},
 		"extraResources": [
 			{

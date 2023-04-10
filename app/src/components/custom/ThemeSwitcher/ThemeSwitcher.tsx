@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import Button from '../../common/Button/Button';
 import { ReactComponent as DarkMode } from '@material-design-icons/svg/filled/dark_mode.svg';
+import Button from '../../common/Button/Button';
 
 
 export default function ThemeSwitcher() {

@@ -30,8 +30,7 @@
 	}
 
 	&:focus-visible {
-		outline: 3px solid $primary-color;
-		outline-offset: 3px;
+		outline: 1.5px solid $color-accent;
 		transition: none;
 		filter: $hover-brightness-light;
 	}
@@ -107,8 +106,6 @@
 	background-color: $primary-color;
 
 	border: none;
-	border-radius: 2px;
-
 	display: inline-block;
 
 	cursor: pointer;
@@ -174,11 +171,10 @@
 }
 
 .ctrl-btn {
-	@include wight(50px, 50px);
+	@include wight(27px, 27px);
 	@include mard(2px, 5px);
 	@include flex-center();
-	border-radius: 100%;
-	font-size: large;
+	border-radius: 7px;
 }
 
 // # Cards
@@ -196,6 +192,11 @@
 		z-index: 0;
 		// transform: translateY(-2px);
 	}
+}
+
+.c-item {
+	background-color: $background-secondary;
+	color: $color-secondary;
 }
 
 // # Content Breakers | Dividers
@@ -250,6 +251,7 @@ html {
 body {
 	@include mard(0, unset);
 	color: $color;
+	fill: $color;
 	background-color: $background;
 
 	overflow: hidden;

@@ -1,0 +1,12 @@
+electron.manifest.json
+        "win": {
+			"icon": "Assets/electron.ico",
+			"publish": [
+				{
+					"provider": "github",
+					"owner": "ElectronNET",
+					"repo": "electron.net-api-demos",
+					"token": ">> Insert GH_TOKEN here! <<"
+				}
+			]
+		},

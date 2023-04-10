@@ -1,6 +1,7 @@
 // Mapped Variables for SCSS use cases
 $color: var(--color);
-$color-secondary: var(--color-secondary);
+$color-accent: var(--color-accent);
+$color-secondary: var(--color-permanent);
 
 $background: var(--background);
 $background-accent: var(--background-accent);
@@ -24,24 +25,25 @@ $hover-brightness-dark: var(--hover-brightness-dark);
 
 // CSS theme sheet
 :root {
-    --color: #000;
-    --color-secondary: #ffffff;
+    --color: #000000;
+    --color-accent: #2d2d2d;
+    --color-permanent: #ffffff;
 
     --background: #ffffff;
-    --background-accent: #e8f2ff;
-    --background-secondary: #0b1624;
-    --background-secondary-accent: #10223b;
+    --background-accent: #e1eee6;
+    --background-secondary: #0e0e0e;
+    --background-secondary-accent: #000000;
 
-    --shadow-color: #002c9262;
+    --shadow-color: #000000;
 
-    --primary-color: #006eff;
-    --primary-accent: #6f00ff;
+    --primary-color: #008542;
+    --primary-accent: #008542;
 
-    --secondary-color: #00ffc3;
-    --secondary-accent: #ff0090;
+    --secondary-color: #008542;
+    --secondary-accent: #008542;
 
     --warn: #ff8c00;
-    --alert: #ff2c2c;
+    --alert: #d93636;
 
     --hover-brightness-light: brightness(110%);
     --hover-brightness-dark: brightness(97%);
@@ -50,20 +52,24 @@ $hover-brightness-dark: var(--hover-brightness-dark);
 
 [data-theme="dark"] {
     --color: #ffffff;
+    --color-accent: #cccccc;
+    --color-permanent: #ffffff;
 
-    --background: #0b1624;
-    --background-accent: #10223b;
+    --background: #1e1e1e;
+    --background-accent: #333333;
+    --background-secondary: #0e0e0e;
+    --background-secondary-accent: #000000;
 
-    --shadow-color: #023f8e60;
+    --shadow-color: #000000;
 
-    --primary-color: #1468d7;
-    --primary-accent: #6915d7;
+    --primary-color: #008542;
+    --primary-accent: #008542;
 
-    --secondary-color: #25cea6;
-    --secondary-accent: #cd2c87;
+    --secondary-color: #008542;
+    --secondary-accent: #008542;
 
     --warn: #d88e32;
-    --alert: #db4c4c;
+    --alert: #d93636;
 
     --hover-brightness-light: brightness(140%);
     --hover-brightness-dark: brightness(110%);
