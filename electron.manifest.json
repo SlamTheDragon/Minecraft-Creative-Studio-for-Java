@@ -1,40 +1,40 @@
 {
-  "executable": "minecraft-creative-studio-for-java",
-  "splashscreen": {
-    "imageFile": ""
-  },
-  "name": "minecraft-creative-studio-for-java",
-  "author": "",
-  "singleInstance": false,
-  "environment": "Production",
-  "entryPoint": "./main.js",
-  "build": {
-    "appId": "com.minecraft-creative-studio-for-java.app",
-    "productName": "minecraft-creative-studio-for-java",
-    "copyright": "Copyright © 2023",
-    "buildVersion": "0.0.0",
-    "compression": "maximum",
-    "directories": {
-      "output": "../../../bin/Desktop"
-    },
-    "extraResources": [
-      {
-        "from": "./bin",
-        "to": "bin",
-        "filter": [
-          "**/*"
-        ]
-      }
-    ],
-    "files": [
-      {
-        "from": "./ElectronHostHook/node_modules",
-        "to": "ElectronHostHook/node_modules",
-        "filter": [
-          "**/*"
-        ]
-      },
-      "**/*"
-    ]
-  }
+	"executable": "minecraft-creative-studio-for-java",
+	"splashscreen": {
+		"imageFile": ""
+	},
+	"name": "minecraft-creative-studio-for-java",
+	"author": "",
+	"singleInstance": false,
+	"environment": "Production",
+	"build": {
+		"appId": "com.minecraft-creative-studio-for-java.app",
+		"productName": "minecraft-creative-studio-for-java",
+		"copyright": "Copyright © 2023",
+		"buildVersion": "0.0.1",
+		"compression": "maximum",
+		"directories": {
+			"output": "../../../bin/Desktop",
+			"buildResources": "Assets"
+		},
+		"extraResources": [
+			{
+				"from": "./bin",
+				"to": "bin",
+				"filter": [
+					"**/*"
+				]
+			}
+		],
+		"files": [
+			{
+				"from": "./ElectronHostHook/node_modules",
+				"to": "ElectronHostHook/node_modules",
+				"filter": [
+					"**/*"
+				]
+			},
+			"**/*"
+		]
+	}
 }

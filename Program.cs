@@ -1,5 +1,5 @@
 using ElectronNET.API;
-
+using ElectronNET.WebApp;
 
 namespace Program
 {
@@ -17,7 +17,7 @@ namespace Program
         {
             webBuilder.UseElectron(args);
             webBuilder.UseEnvironment("Development");
-            webBuilder.UseStartup<SystemStartup.Startup>();
+            webBuilder.UseStartup<Startup>();
         });
     }
 }

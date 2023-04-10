@@ -1,0 +1,2 @@
+## Material Icons by [Google](https://github.com/google/material-design-icons) are installed
+- Check this [README](https://github.com/marella/material-design-icons/tree/main/svg#usage) for usage guidance
