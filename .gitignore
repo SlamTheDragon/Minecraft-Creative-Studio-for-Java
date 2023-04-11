@@ -230,3 +230,12 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+electron-debug/node_modules/electron/dist/d3dcompiler_47.dll
+electron-debug/node_modules/electron/dist/electron.exe
+electron-debug/node_modules/electron/dist/ffmpeg.dll
+electron-debug/node_modules/electron/dist/icudtl.dat
+electron-debug/node_modules/electron/dist/libEGL.dll
+electron-debug/node_modules/electron/dist/libGLESv2.dll
+electron-debug/node_modules/electron/dist/resources/default_app.asar
+electron-debug/node_modules/electron/dist/v8_context_snapshot.bin
+electron-debug/node_modules/electron/dist/vk_swiftshader.dll

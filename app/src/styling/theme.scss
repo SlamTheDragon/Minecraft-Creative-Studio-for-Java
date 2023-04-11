@@ -19,6 +19,9 @@ $secondary-accent: var(--secondary-accent);
 $warn: var(--warn);
 $alert: var(--alert);
 
+$scroll-thumb: var(--scroll-thumb);
+$scroll-bg: var(--scroll-bg);
+
 $hover-brightness-light: var(--hover-brightness-light);
 $hover-brightness-dark: var(--hover-brightness-dark);
 
@@ -45,6 +48,10 @@ $hover-brightness-dark: var(--hover-brightness-dark);
     --warn: #ff8c00;
     --alert: #d93636;
 
+    --scroll-thumb: #929c96;
+    --scroll-bg: #ffffff00;
+    --scroll-bg-hover: #ffffff;
+
     --hover-brightness-light: brightness(110%);
     --hover-brightness-dark: brightness(97%);
 }
@@ -70,6 +77,10 @@ $hover-brightness-dark: var(--hover-brightness-dark);
 
     --warn: #d88e32;
     --alert: #d93636;
+
+    --scroll-thumb: #515151;
+    --scroll-bg: #262626;
+    --scroll-bg-hover: #262626;
 
     --hover-brightness-light: brightness(140%);
     --hover-brightness-dark: brightness(110%);

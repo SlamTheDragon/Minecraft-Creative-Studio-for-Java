@@ -1,0 +1,6 @@
+@import '../index.scss';
+
+.viewport {
+    @include wight(100%, 97.2vh);
+    background-color: $background;
+}   

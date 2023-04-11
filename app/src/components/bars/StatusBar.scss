@@ -1,0 +1,28 @@
+@import '../../index.scss';
+
+.statusbar {
+    @include wight(100%, 23px);
+    background-color: $primary-accent;
+    color: $color-secondary;
+
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    overflow: hidden;
+    justify-content: space-between;
+    
+    * {
+        display: flex;
+        align-items: center;
+        @include mard(0px 10px, unset);
+        background-color: unset;
+    }
+
+    .ctrl-btn {
+        @include wight(45px , unset);
+        fill: $color-secondary;
+        background-color: unset;
+    }
+}
