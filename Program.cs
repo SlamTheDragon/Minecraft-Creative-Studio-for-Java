@@ -1,7 +1,5 @@
 using ElectronNET.API;
 using ElectronNET.WebApp;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
 
 namespace Program
 {
@@ -16,13 +14,8 @@ namespace Program
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseElectron(args);
-                    webBuilder.UseEnvironment("Development");
-                    webBuilder.ConfigureKestrel(options =>
-                    {
-                        options.ListenLocalhost(5000); // Replace with your desired port number
-                    });
                     webBuilder.UseStartup<Startup>();
+                    webBuilder.UseElectron(args);
                 });
     }
 }

@@ -29,7 +29,7 @@ function createWindow() {
     // win.loadFile("index.html");
     win.loadURL(
         isDev
-            ? 'https://localhost:3000'
+            ? 'https://localhost:44456'
             : `file://${path.join(__dirname, './build/index.html')}`
     );
     // Open the DevTools.

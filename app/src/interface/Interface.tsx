@@ -3,8 +3,7 @@ import './Interface.scss'
 import Button from "../components/common/Button/Button"
 import { useNavigate } from "react-router-dom";
 import StatusBar from '../components/bars/StatusBar';
-import Panel from '../components/common/Panel/Panel';
-import Grid from '../components/common/Panel/Grid';
+
 
 export default function Interface() {
     const history = useNavigate();

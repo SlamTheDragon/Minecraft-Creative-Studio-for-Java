@@ -7,6 +7,21 @@
   "author": "SlamTheDragon",
   "singleInstance": false,
   "environment": "Development",
+  "mainWindowOptions": {
+    "webPreferences": {
+      "nodeIntegration": false,
+      "preload": "./ElectronHostHook/preload.js",
+      "webSecurity": true,
+      "devTools": true
+    },
+    "width": 800,
+    "height": 600,
+    "minWidth": 800,
+    "minHeight": 600,
+    "center": true,
+    "show": true,
+    "frame": true
+  },
   "build": {
     "appId": "com.minecraft-creative-studio-for-java.app",
     "productName": "minecraft-creative-studio-for-java",

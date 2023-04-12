@@ -26,7 +26,6 @@ export default function ThemePlayground() {
         outsideElements.forEach((element) => {
             element.setAttribute('tabindex', '-1');
         });
-
     };
 
     const handleEscapeKeyPress = (event: KeyboardEvent) => {
