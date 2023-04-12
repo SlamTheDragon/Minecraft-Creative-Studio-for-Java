@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from "react-router-dom";
 
 
 interface ButtonInterface {
@@ -9,10 +8,9 @@ interface ButtonInterface {
     children?: React.ReactNode;
 }
 
-export default function Button({ href, classItem, children, onclick }: ButtonInterface): JSX.Element {
+export default function Button({ classItem, children, onclick }: ButtonInterface): JSX.Element {
+  
     return (
-        (href) ?
-            (<Link className={classItem} to={href}> {children} </Link>) :
             (<button className={classItem} onClick={onclick}> {children} </button>)
     );
 }

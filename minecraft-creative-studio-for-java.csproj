@@ -17,7 +17,11 @@
 
 	<ItemGroup>
 		<PackageReference Include="ElectronNET.API" Version="23.6.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
 		<PackageReference Include="Microsoft.AspNetCore.SpaProxy" Version="6.0.15" />
+		<PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.11" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="2.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -45,7 +49,7 @@
 		<!-- Include the newly-built files in the publish output -->
 		<ItemGroup>
 			<DistFiles Include="$(SpaRoot)build\**" />
-			<ResolvedFileToPublish Include="@(DistFiles-&gt;'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+			<ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
 				<RelativePath>wwwroot\%(RecursiveDir)%(FileName)%(Extension)</RelativePath>
 				<CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
 				<ExcludeFromSingleFile>true</ExcludeFromSingleFile>
