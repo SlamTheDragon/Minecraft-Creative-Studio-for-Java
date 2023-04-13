@@ -1,21 +1,17 @@
+using Microsoft.AspNetCore;
 using ElectronNET.API;
-using ElectronNET.WebApp;
+using Microsoft.AspNetCore.Hosting;
 
-namespace Program
+
+namespace SampleApp
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                    webBuilder.UseElectron(args);
-                });
+        public static IWebHost BuildWebHost(string[] args) => WebHost.CreateDefaultBuilder(args).UseStartup<Startup>().UseElectron(args).Build();
     }
 }

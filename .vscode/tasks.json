@@ -36,51 +36,6 @@
                 "${workspaceFolder}/minecraft-creative-studio-for-java.csproj"
             ],
             "problemMatcher": "$msCompile"
-        },
-        {
-            "label": "build app",
-            "type": "shell",
-            "command": "npm",
-            "args": [
-                "run",
-                "build"
-            ],
-            "runOptions": {
-                "runOn": "default"
-            },
-            "options": {
-                "cwd": "${workspaceFolder}/app"
-            },
-            "problemMatcher": {
-                "owner": "typescript",
-                "fileLocation": [
-                    "relative",
-                    "${workspaceFolder}/app"
-                ],
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+)\\s+-\\s+(error|warning)\\s+(TS\\d+):\\s*(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "code": 5,
-                    "message": 6
-                }
-            },
-        },
-        {
-            "label": "copyBuildDirectory",
-            "command": "cp",
-            "type": "shell",
-            "args": [
-                "-r",
-                "${workspaceFolder}/app/build",
-                "${workspaceFolder}/electron-debug/build"
-            ],
-            "problemMatcher": [],
-            "dependsOn": [
-                "build app"
-            ]
         }
     ]
 }

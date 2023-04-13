@@ -1,54 +1,33 @@
 {
-  "executable": "minecraft-creative-studio-for-java",
-  "splashscreen": {
-    "imageFile": ""
-  },
-  "name": "minecraft-creative-studio-for-java",
-  "author": "SlamTheDragon",
-  "singleInstance": false,
-  "environment": "Development",
-  "mainWindowOptions": {
-    "webPreferences": {
-      "nodeIntegration": false,
-      "preload": "./ElectronHostHook/preload.js",
-      "webSecurity": true,
-      "devTools": true
-    },
-    "width": 800,
-    "height": 600,
-    "minWidth": 800,
-    "minHeight": 600,
-    "center": true,
-    "show": true,
-    "frame": true
-  },
-  "build": {
-    "appId": "com.minecraft-creative-studio-for-java.app",
-    "productName": "minecraft-creative-studio-for-java",
-    "copyright": "Copyright © 2023",
-    "buildVersion": "0.0.1",
-    "compression": "maximum",
-    "directories": {
-      "output": "../../../bin/Desktop"
-    },
-    "extraResources": [
-      {
-        "from": "./bin",
-        "to": "bin",
-        "filter": [
-          "**/*"
-        ]
-      }
-    ],
-    "files": [
-      {
-        "from": "./ElectronHostHook/node_modules",
-        "to": "ElectronHostHook/node_modules",
-        "filter": [
-          "**/*"
-        ]
-      },
-      "**/*"
-    ]
-  }
+	"executable": "minecraft-creative-studio-for-java",
+	"splashscreen": {
+		"imageFile": "/wwwroot/logo512.png"
+	},
+	"name": "minecraft-creative-studio-for-java",
+	"author": "SlamTheDragon",
+	"singleInstance": false,
+	"environment": "Development",
+	"build": {
+		"appId": "com.minecraft-creative-studio-for-java.app",
+		"productName": "minecraft-creative-studio-for-java",
+		"copyright": "Copyright © 2023",
+		"buildVersion": "0.0.1",
+		"compression": "maximum",
+		"directories": {
+			"output": "../../../bin/Desktop",
+			"buildResources": "build"
+		},
+		"win": {
+			"icon": "/wwwroot/logo192.png"
+		},
+		"extraResources": [
+			{
+				"from": "./bin",
+				"to": "bin",
+				"filter": [
+					"**/*"
+				]
+			}
+		]
+	}
 }

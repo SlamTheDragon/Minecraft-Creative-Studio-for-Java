@@ -47,7 +47,9 @@ Follow these steps to get started developing
 <br/>
 
 # Baby Steps...
-- This project is not being developed continually. As of now, the plans for this projects are quite a bit unorganized.
+- ### This is a personal project made by [SlamTheDragon](https://github.com/SlamTheDragon)
+    - This project is not being actively developed. As of now, the plans for this projects are quite a bit unorganized.
+    
+    <br/>
 
-    ### This is a personal project made by [SlamTheDragon](https://github.com/SlamTheDragon)
     > The project author does not have enough skillset to properly develop this desktop application smoothly as what he have envisioned before [Minecraft Preview Editor](https://learn.microsoft.com/en-us/minecraft/creator/documents/editorinstallation) came out. If you wish to contribute to this project feel free to open any issues or pull requests.

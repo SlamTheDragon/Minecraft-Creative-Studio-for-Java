@@ -1,7 +1,12 @@
-﻿using ElectronNET.API;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
+﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using ElectronNET.API;
+using ElectronNET.API.Entities;
+using Microsoft.Extensions.Hosting;
 
-namespace ElectronNET.WebApp
+namespace SampleApp
 {
     public class Startup
     {
@@ -15,61 +20,68 @@ namespace ElectronNET.WebApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc();
+            services.AddMemoryCache();
 
             services.AddControllersWithViews();
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
-                configuration.RootPath = "app/build";
+                configuration.RootPath = "wwwroot";
             });
-            services.AddHttpsRedirection(options =>
-            {
-                options.HttpsPort = int.Parse(Environment.GetEnvironmentVariable("ASPNETCORE_HTTPS_PORT"));
-            });
+            // services.AddHttpsRedirection(options =>
+            // {
+            //     options.HttpsPort = 1234;
+            // });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
                 app.UseBrowserLink();
             }
-            else
-            {
-                app.UseExceptionHandler("/Error");
-                app.UseHsts();
-            }
-            // app.UseHttps();
+            // else
+            // {
+            //     app.UseExceptionHandler("/Home/Error");
+            // }
 
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
-            app.UseEndpoints(endpoints =>
+            app.UseWebSockets();
+
+            // Removed due to errors. Let me know what this does
+            // app.UseMvc(routes =>
+            // {
+            //     routes.MapRoute(
+            //         name: "default",
+            //         template: "{controller=Home}/{action=Index}/{id?}");
+            // });
+
+            if (HybridSupport.IsElectronActive)
             {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller}/{action=Index}/{id?}");
-            });
-            app.UseHttpsRedirection();
-            app.UseRouting();
+                ElectronBootstrap();
+            }
+        }
 
-            // app.Listen("http://*:8000");
-
-
-            app.UseSpa(spa =>
+        public async void ElectronBootstrap()
+        {
+            var prefs = new BrowserWindowOptions
             {
-                spa.Options.SourcePath = "app";
+                Width = 1152,
+                Height = 670,
+                Show = false,
+                WebPreferences = new WebPreferences { WebSecurity = false }
+            };
+            var browserWindow = await Electron.WindowManager.CreateWindowAsync(prefs);
+            browserWindow.OnReadyToShow += () => browserWindow.Show();
+            RegisterIpc.Impl.Register();
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:3000");
-                }
-            });
-
-            Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+            // browserWindow.SetTitle(Configuration["Demo"]);
+            // This gives an error for some reason
         }
     }
 }

@@ -6,14 +6,13 @@
 		<TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
 		<TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
 		<IsPackable>false</IsPackable>
-		<SpaRoot>app\</SpaRoot>
+		<SpaRoot></SpaRoot>
 		<DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
 		<SpaProxyServerUrl>https://localhost:44456</SpaProxyServerUrl>
 		<SpaProxyLaunchCommand>npm start</SpaProxyLaunchCommand>
 		<RootNamespace>Minecraft - Creative Studio</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
-
 
 	<ItemGroup>
 		<PackageReference Include="ElectronNET.API" Version="23.6.1" />
