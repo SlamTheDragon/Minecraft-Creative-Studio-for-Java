@@ -4,6 +4,7 @@
   "author": "SLamTheDragon",
   "license": "MIT",
   "dependencies": {
+    "@appland/appmap-agent-js": "^13.6.0",
     "@material-design-icons/svg": "^0.14.5",
     "bootstrap": "^5.1.3",
     "http-proxy-middleware": "^2.0.6",

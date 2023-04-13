@@ -1,0 +1,7 @@
+name: app
+packages:
+  - path: build\static\css
+  - path: build\static\js
+  - path: src
+language: javascript
+appmap_dir: tmp/appmap
