@@ -1,9 +1,8 @@
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API.Entities;
 using ElectronNET.API;
+using MinecraftStudio.Register;
 
-namespace SampleApp
+namespace MinecraftStudio.Menu
 {
     public class MenuCreator
     {

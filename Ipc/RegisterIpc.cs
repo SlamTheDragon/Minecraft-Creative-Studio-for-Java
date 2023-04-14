@@ -1,7 +1,8 @@
 using ElectronNET.API;
+using MinecraftStudio.Menu;
 
 
-namespace SampleApp
+namespace MinecraftStudio.Register
 {
     public class RegisterIpc
     {
