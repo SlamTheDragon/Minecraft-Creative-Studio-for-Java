@@ -3,7 +3,7 @@
 .statusbar {
     @include wight(100%, 23px);
     background-color: $primary-accent;
-    color: $color-secondary;
+    color: $color-permanent;
 
     position: fixed;
     bottom: 0;
@@ -20,9 +20,9 @@
         background-color: unset;
     }
 
-    .ctrl-btn {
+    .btn-b {
         @include wight(45px , unset);
-        fill: $color-secondary;
+        fill: $color-permanent;
         background-color: unset;
     }
 }

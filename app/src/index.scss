@@ -1,24 +1,37 @@
-@import './styling/theme.scss';
+@import "./styling/theme.scss";
+
+// ==========================
+// [    global root vars    ]
+// ==========================
+$border-radius: 3px;
+
+$font-size: 12px;
+$font-size-emphasis: 14px;
 
 // ==========================
 // [    component mixins    ]
 // --------------------------
-//  Declare attributes with 
-//  unset value to disable 
+//  Declare attributes with
+//  unset value to disable
 //  when applied
 // ==========================
 
-
 // # Misc
 @mixin shadow {
-	box-shadow: 0px 5px 15px -15px $use-shadow-color;
-	-webkit-box-shadow: 0px 5px 15px -15px $use-shadow-color;
-	-moz-box-shadow: 0px 5px 15px -15px $use-shadow-color;
+	box-shadow: 0px 0px 5px -3px $use-shadow-color;
+	-webkit-box-shadow: 0px 0px 5px -3px $use-shadow-color;
+	-moz-box-shadow: 0px 0px 5px -3px $use-shadow-color;
 }
 
-
 // # FUNCTIONAL
-@mixin transform2D ($x, $y) {
+@mixin absolute-pos($top, $left, $bottom, $right) {
+	top: $top;
+	left: $left;
+	bottom: $bottom;
+	right: $right;
+}
+
+@mixin transform2D($x, $y) {
 	transform: translateX($x);
 	transform: translateY($y);
 }
@@ -45,15 +58,12 @@
 }
 
 @mixin onHover($class) {
-
 	@if $class ==0 {
 		&:hover {
 			z-index: 0;
 			filter: $hover-brightness-light;
 		}
-	}
-	
-	@else if $class ==1 {
+	} @else if $class ==1 {
 		&:hover {
 			z-index: 0;
 			filter: $hover-brightness-dark;
@@ -62,7 +72,6 @@
 }
 
 @mixin onActive {
-
 	&:active {
 		filter: brightness(95%);
 		// transform: scale(0.97, 0.97);
@@ -70,7 +79,7 @@
 }
 
 // element state combinations
-@mixin elementState-A($class) {
+@mixin elementState($class) {
 	@include onHover($class);
 	@include onActive();
 }
@@ -85,6 +94,10 @@
 	height: $height;
 }
 
+@mixin border-radious {
+	border-radius: $border-radius;
+}
+
 @mixin flex-center {
 	display: flex;
 	justify-content: center;
@@ -92,23 +105,32 @@
 }
 
 // # COMPONENT STYLES
-@mixin btn-default {
-	@include mard(5px 10px, 13px 23px);
-	@include elementState-A(0);
+@mixin btn {
+	@include mard(3px 8px, 5.5px 15px);
+	@include elementState(0);
 	@include use-focus();
-	// @include shadow;
+	@include shadow;
+	@include border-radious();
 
-	// this can apply to both anchor tags and buttons.
+	text-shadow: $color-permanent-secondary 0px 0.5px 0.3px;
 	text-decoration: none;
-	font-size: 14px;
+	text-overflow: ellipsis;
 	color: $color;
 	fill: $color;
 	background-color: $primary-color;
-
+	
+	overflow: hidden;
 	border: none;
 	display: inline-block;
 
 	cursor: pointer;
+}
+
+@mixin btn-default {
+	@include btn();
+	@include no-select();
+	color: $color;
+	background-color: $background-accent;
 }
 
 @mixin card-default {
@@ -119,13 +141,12 @@
 	z-index: 0;
 	border-radius: 2px;
 	background-color: $background-accent;
-	
-	&:hover {
-		z-index: 0;
-		// transform: translateY(-2px);
-	}
-}
 
+	// &:hover {
+	// 	// z-index: 0;
+	// 	// transform: translateY(-2px);
+	// }
+}
 
 // ==========================
 // [    component styles    ]
@@ -133,51 +154,64 @@
 
 // # Buttons
 .btn {
-	@include btn-default;
-	@include no-select();
-	color: $color;
-	background-color: $background-accent;
+	@include btn-default();
+}
+
+.btn-a {
+	@include btn-default();
+	@include mard(8px, 14px 24px);
+	@include flex-center();
+
+	font-size: $font-size-emphasis;
+}
+
+.btn-b {
+	@include btn-default();
+
+	@include wight(23.5px, 23.5px);
+	@include mard(2px, 3.5px);
+	@include flex-center();
+	border-radius: 7px;
 }
 
 .primary {
-	color: $color-secondary;
-	fill: $color-secondary;
+	color: $color-permanent;
+	fill: $color-permanent;
 	background-color: $primary-color;
 }
 
 .secondary {
-	color: $color-secondary;
-	fill: $color-secondary;
+	color: $color-permanent;
+	fill: $color-permanent;
 	background-color: $secondary-color;
 }
 
 .warn {
-	color: $color-secondary;
-	fill: $color-secondary;
+	color: $color-permanent;
+	fill: $color-permanent;
 	background-color: $warn;
 }
 
 .alert {
-	color: $color-secondary;
-	fill: $color-secondary;
+	color: $color-permanent;
+	fill: $color-permanent;
 	background-color: $alert;
 }
 
 // # Buttons Accent
 .p-accent {
-	color: $color-secondary;
+	color: $color-permanent;
 	background-color: $primary-accent;
 }
 
 .s-accent {
-	color: $color-secondary;
+	color: $color-permanent;
 	background-color: $secondary-accent;
 }
 
 .disabled {
 	cursor: not-allowed;
-	filter: grayscale(100%) brightness(90%);
-	z-index: 0;
+	// filter: grayscale(100%) brightness(90%);
 
 	&:hover,
 	&:active,
@@ -185,15 +219,8 @@
 	&:focus-visible,
 	&:focus-within {
 		cursor: not-allowed;
-		filter: grayscale(100%);
+		// filter: grayscale(100%);
 	}
-}
-
-.ctrl-btn {
-	@include wight(27px, 27px);
-	@include mard(2px, 3.5px);
-	@include flex-center();
-	border-radius: 7px;
 }
 
 // # Cards
@@ -203,7 +230,7 @@
 
 .c-item {
 	background-color: $background-secondary;
-	color: $color-secondary;
+	color: $color-permanent;
 }
 
 .panel {
@@ -217,7 +244,6 @@
 	@include mard(10px, 0.5px);
 	background-color: $color;
 }
-
 
 // ==================================
 // [    Custom Bootstrap Methods    ]
@@ -245,19 +271,19 @@
 
 .overflow {
 	overflow-y: scroll;
-	
+
 	/* width */
 	&::-webkit-scrollbar {
 		display: none;
 	}
 }
 
-
 // ==============
 // [    root    ]
 // ==============
 
 * {
+	font-size: $font-size;
 	scrollbar-width: auto;
 	scrollbar-color: $scroll-thumb $scroll-bg;
 
@@ -277,8 +303,28 @@
 	}
 }
 
-html {
-	font-family: sans-serif;
+h1 {
+	font-size: 31px;
+}
+
+h2 {
+	font-size: 23px;
+}
+
+h3 {
+	font-size: 19px;
+}
+
+h4 {
+	font-size: 15px;
+}
+
+h5 {
+	font-size: 13px;
+}
+
+h6 {
+	font-size: 11px;
 }
 
 body {
@@ -287,7 +333,8 @@ body {
 	color: $color;
 	fill: $color;
 	background-color: $background;
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+		"Open Sans", "Helvetica Neue", sans-serif;
 
 	overflow: hidden;
 }

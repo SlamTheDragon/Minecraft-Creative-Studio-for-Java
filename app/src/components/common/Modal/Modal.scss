@@ -1,34 +1,47 @@
-@import '../../../index.scss';
+@import "../../../index.scss";
 
 .modal {
+    @include absolute-pos(0, 0, 0, 0);
     @include flex-center;
-    @include wight(100vw, 100vh);
     position: fixed;
     pointer-events: all;
-
+    
     .modal-content {
-        @include mard(0, 30px);
+        border: 1px solid $color-permanent-secondary;
+        @include mard(auto, unset);
         @include wight(50%, 50%);
+        @include border-radious;
+        @include shadow;
 
         z-index: 1;
+        position: relative;
         display: flex;
         flex-direction: column;
-        
-        button {
+        cursor: default;
+
+        // add format here for header or whatever
+        .modal-header {
+            @include mard(unset, 8px 20px);
+            @include wight(unset, 50px);
             @include flex-center;
-            @include wight(30px, 30px);
-            display: inline-flex;
-            align-self: flex-end;
+            justify-content: space-between;
+            border-bottom: 1px solid $color-permanent-secondary;
+
+            button {
+                box-shadow: unset;
+                pointer-events: all;
+                @include wight(30px, 30px);
+                display: inline-flex;
+            }
         }
     }
-    
+
     .modal-background {
-        z-index: 1;
-        background-color: $background-secondary-accent;
-        position: absolute;
-        // transform: translate(0px,-10.5px);
         @include flex-center;
         @include wight(100%, 100%);
+
+        position: absolute;
+        background-color: $background;
         filter: opacity(0.5);
     }
 }

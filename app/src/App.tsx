@@ -8,7 +8,6 @@ export default function App() {
 			<BrowserRouter>
 				<Routes>
 					<Route path="/" element={<Interface />} />
-					<Route path="/playground" element={<ThemePlayground />} />
 				</Routes>
 			</BrowserRouter>
 		</>

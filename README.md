@@ -1,5 +1,5 @@
 # Minecraft Creative Studio For Java
- This is a Minecraft Creative Editor similar to [Minecraft Bedrock's Editor](https://learn.microsoft.com/en-us/minecraft/creator/documents/editorinstallation) with a goal to implement expandable tools opening a lot more creative freedom and opportunities to map builders, redstone engineers, modders, animators, etc. The Minecraft Creative Studio aims to include and provide most tools that were developed for the past years such as [MCEdit](https://www.worldpainter.net/), [World Painter](https://www.mcedit.net/), etc.
+ A Minecraft Creative Editor similar to [Minecraft Bedrock's Editor](https://learn.microsoft.com/en-us/minecraft/creator/documents/editorinstallation) with a goal to implement expandable tools opening a lot more creative freedom and opportunities to map builders, redstone engineers, modders, animators, etc. The Minecraft Creative Studio aims to include and provide most tools that were developed for the past years such as [MCEdit](https://www.worldpainter.net/), [World Painter](https://www.mcedit.net/), etc.
 
 <br/>
 
@@ -47,7 +47,7 @@ Follow these steps to get started developing
 <br/>
 
 # Baby Steps...
-- ### This is a personal project made by [SlamTheDragon](https://github.com/SlamTheDragon)
+- ### This is a passion project made by [SlamTheDragon](https://github.com/SlamTheDragon)
     - This project is not being actively developed. As of now, the plans for this projects are quite a bit unorganized.
     
     <br/>

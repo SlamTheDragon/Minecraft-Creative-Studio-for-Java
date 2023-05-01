@@ -5,14 +5,25 @@
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Minecraft - Creative Studio For Java</title>
-	<link rel="stylesheet" href="static/css/main.99d49e9a.css">
+	<link rel="stylesheet" href="static/css/styles.css">
 </head>
 
 <body>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root"></div>
 
-	<script src="~/static/js/main.f01af63e.js"></script>
+	<script src="~/static/js/bundle.js"></script>
+	<script defer>
+		(function () {
+			console.log("clicked");
+
+			const { ipcRenderer } = require("electron");
+			document.getElementById("new-window").addEventListener("click", () => {
+				console.log("clicked-triggered");
+				ipcRenderer.send("new-window");
+			});
+		});
+	</script>
 </body>
 
 </html>

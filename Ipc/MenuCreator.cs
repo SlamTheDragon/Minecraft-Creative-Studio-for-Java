@@ -18,17 +18,8 @@ namespace MinecraftStudio.Menu
                             Accelerator = "CmdOrCtrl+R",
                             Click = () =>
                             {
-                                // on reload, start fresh and close any old
-                                // open secondary windows
                                 Electron.WindowManager.BrowserWindows.ToList().ForEach(browserWindow => {
-                                    // if(browserWindow.Id != 1)
-                                    // {
-                                    //     browserWindow.Close();
-                                    // }
-                                    // else
-                                    // {
-                                        browserWindow.Reload();
-                                    // }
+                                    browserWindow.Reload();
                                 });
                             }
                         },
@@ -54,6 +45,20 @@ namespace MinecraftStudio.Menu
                             Click = () => RegisterIpc.Impl.BrowserBackWebView()
                         },
                     }},
+                    new MenuItem { Label = "View", Submenu = new MenuItem[] {
+                        new MenuItem
+                        {
+                            Label = "Toggle Fullscreeen",
+                            Accelerator = "F11",
+                            Click = () =>
+                            {
+                                Electron.WindowManager.BrowserWindows.ToList().ForEach(browserWindow => {
+                                    // FIXME: set toggleable
+                                    browserWindow.SetFullScreen(true);
+                                });
+                            }
+                        }
+                    }}
                 };
                 Electron.Menu.SetApplicationMenu(menu);
                 CreateContextMenu();
@@ -61,18 +66,8 @@ namespace MinecraftStudio.Menu
         }
         static private void CreateContextMenu()
         {
-            // var menu = new MenuItem[]
-            // {
-            //     new MenuItem
-            //     {
-            //         Label = "Test 1",
-            //         Click = async () => await Electron.Dialog.ShowMessageBoxAsync("Success")
-            //     },
-            //     new MenuItem { Type = MenuType.separator },
-            //     new MenuItem { Label = "Test 2", Type = MenuType.checkbox, Checked = true }
-            // };
             var mainWindow = Electron.WindowManager.BrowserWindows.First();
-            // Electron.Menu.SetContextMenu(mainWindow, menu);
+
             Electron.IpcMain.On("show-context-menu", (args) =>
             {
                 Electron.Menu.ContextMenuPopup(mainWindow);

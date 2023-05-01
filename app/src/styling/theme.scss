@@ -1,7 +1,9 @@
 // Mapped Variables for SCSS use cases
 $color: var(--color);
+$color-secondary: var(--color-secondary);
 $color-accent: var(--color-accent);
-$color-secondary: var(--color-permanent);
+$color-permanent: var(--color-permanent);
+$color-permanent-secondary: var(--color-permanent-secondary);
 
 $background: var(--background);
 $background-accent: var(--background-accent);
@@ -29,8 +31,10 @@ $hover-brightness-dark: var(--hover-brightness-dark);
 // CSS theme sheet
 :root {
     --color: #000000;
+    --color-secondary: #ffffff;
     --color-accent: #2d2d2d;
     --color-permanent: #ffffff;
+    --color-permanent-secondary: #00000087;
 
     --background: #ffffff;
     --background-accent: #e1eee6;
@@ -59,8 +63,10 @@ $hover-brightness-dark: var(--hover-brightness-dark);
 
 [data-theme="dark"] {
     --color: #ffffff;
+    --color-secondary: #000000;
     --color-accent: #cccccc;
     --color-permanent: #ffffff;
+    --color-permanent-secondary: #00000087;
 
     --background: #1e1e1e;
     --background-accent: #333333;

@@ -16,7 +16,7 @@ export default function ThemeSwitcher() {
     }, []);
 
     const toggleTheme = () => {
-        const newTheme = theme === 'dark' ? 'light' : 'dark';
+        const newTheme = theme === 'light' ? 'dark' : 'light';
         setTheme(newTheme);
 
         window.localStorage.setItem("theme", newTheme);
@@ -24,7 +24,7 @@ export default function ThemeSwitcher() {
     };
 
     return (
-        <Button classItem={'btn ctrl-btn'} onclick={toggleTheme}>
+        <Button classItem={'btn-b'} onclick={toggleTheme}>
             <DarkMode/>
         </Button>
     );
