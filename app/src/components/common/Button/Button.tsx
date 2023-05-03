@@ -1,5 +1,6 @@
 interface ButtonInterface {
     classItem: string               // btn | btn-a | btn-b | primary | secondary | warn | alert | p-accent | s-accent | disabled
+    idItem?: string
     children?: React.ReactNode
     disabled?: boolean
     tabIndex?: number
@@ -9,9 +10,10 @@ interface ButtonInterface {
 }
 
 
-export default function Button({ onclick, children, classItem, disabled, tabIndex, style, onKeyDown }: ButtonInterface) {
+export default function Button({ idItem, onclick, children, classItem, disabled, tabIndex, style, onKeyDown }: ButtonInterface) {
     return (
         <button disabled={disabled}
+            id={idItem}
             tabIndex={tabIndex}
             className={classItem}
             onClick={onclick}

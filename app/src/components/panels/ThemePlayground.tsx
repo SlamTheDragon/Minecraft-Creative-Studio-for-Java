@@ -23,7 +23,7 @@ export default function ThemePlayground() {
         document.body.classList.add('disable-events');
         document.addEventListener('keydown', handleEscapeKeyPress);
         // you could also add other selectors e.g.; ...rAll('button, div, a, ...');
-        const outsideElements = document.querySelectorAll('button');
+        const outsideElements = document.querySelectorAll('button, div, a, input, textarea, select');
         outsideElements.forEach((element) => {
             element.setAttribute('tabindex', '-1');
         });
@@ -41,7 +41,7 @@ export default function ThemePlayground() {
     function closeModal() {
         setShowModal(false);
         document.removeEventListener('keydown', handleEscapeKeyPress);
-        const outsideElements = document.querySelectorAll('button');
+        const outsideElements = document.querySelectorAll('button, div, a, input, textarea, select');
         outsideElements.forEach((element) => {
             element.removeAttribute('tabindex');
         });
@@ -50,7 +50,7 @@ export default function ThemePlayground() {
     return (
         <>
             <Modal isOpen={showModal} onClose={closeModal} onMouseEnter={handleMouseEnter} modalTitle={"Modal Title"}>
-                <p>Modal content goes here.</p>
+                <div>Modal content goes here.</div>
             </Modal>
 
             <div className="viewport" style={{ overflowY: "scroll" }}>
@@ -84,10 +84,36 @@ export default function ThemePlayground() {
                             <s>
                                 click <strong>home</strong> to go back to the main view
                             </s>
-                            <br/>
+                            <br />
                             this has been removed
-                         </span>
+                        </span>
                     </div>
+                </div>
+
+                <div className="card c-container" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "start" }}>
+                    <h1>Inputs</h1>
+
+                    <input type="button" value="Button Label" />
+
+                    <span style={{ display: "flex", flexDirection: "row" }}>
+                        <input type="checkbox" />
+                        <Button classItem={"btn-b"}><Info /></Button>
+                        <input type="radio" />
+                    </span>
+                    <input type="range" />
+                    <input type="file" />
+                    <input type="number" />
+                    <input type="text" />
+                    <input type="reset" />
+                    <textarea className="ta-none" name="paragraph_text" cols={100} rows={10}></textarea>
+                    <textarea className="ta-v" name="paragraph_text" cols={100} rows={10}></textarea>
+                    <textarea name="paragraph_text" cols={100} rows={10}></textarea>
+                    <select>
+                        <option>Choose Option</option>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
                 </div>
 
                 <div className="card" style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
@@ -118,7 +144,7 @@ export default function ThemePlayground() {
                     <Button classItem={"btn-a disabled"}>Disabled</Button>
                 </div>
 
-                <div className="card overflow" style={{ height: "21%" }}>
+                <div className="card overflow" style={{ height: "35%" }}>
                     <h1>Lorem Ipsum Dolor Sit Amet</h1>
                     <h2>Lorem Ipsum Dolor Sit Amet</h2>
                     <h3>Lorem Ipsum Dolor Sit Amet</h3>
@@ -146,7 +172,7 @@ export default function ThemePlayground() {
                 <div className="card">
                     <h1>Card C</h1>
                     <Button classItem={"btn primary"}>Button</Button>
-                </div>\
+                </div>
             </div>
         </>
     );

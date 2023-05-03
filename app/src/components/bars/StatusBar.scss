@@ -6,22 +6,28 @@
     color: $color-permanent;
 
     position: fixed;
-    bottom: 0;
     display: flex;
     align-items: center;
     flex-direction: row;
     overflow: hidden;
     justify-content: space-between;
+    bottom: 0;
     
     * {
+        @include mard(0px 10px, unset);
+
         display: flex;
         align-items: center;
-        @include mard(0px 10px, unset);
         background-color: unset;
+    }
+
+    span {
+        text-overflow: ellipsis;
     }
 
     .btn-b {
         @include wight(45px , unset);
+
         fill: $color-permanent;
         background-color: unset;
     }

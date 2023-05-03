@@ -50,12 +50,10 @@ namespace MinecraftStudio.Menu
                         {
                             Label = "Toggle Fullscreeen",
                             Accelerator = "F11",
-                            Click = () =>
+                            Click = async () =>
                             {
-                                Electron.WindowManager.BrowserWindows.ToList().ForEach(browserWindow => {
-                                    // FIXME: set toggleable
-                                    browserWindow.SetFullScreen(true);
-                                });
+                                bool isFullScreen = await Electron.WindowManager.BrowserWindows.First().IsFullScreenAsync();
+                                Electron.WindowManager.BrowserWindows.First().SetFullScreen(!isFullScreen);
                             }
                         }
                     }}

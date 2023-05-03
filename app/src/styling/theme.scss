@@ -27,7 +27,6 @@ $scroll-bg: var(--scroll-bg);
 $hover-brightness-light: var(--hover-brightness-light);
 $hover-brightness-dark: var(--hover-brightness-dark);
 
-
 // CSS theme sheet
 :root {
     --color: #000000;
@@ -59,7 +58,6 @@ $hover-brightness-dark: var(--hover-brightness-dark);
     --hover-brightness-light: brightness(110%);
     --hover-brightness-dark: brightness(97%);
 }
-
 
 [data-theme="dark"] {
     --color: #ffffff;

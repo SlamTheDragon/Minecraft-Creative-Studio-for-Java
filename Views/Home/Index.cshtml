@@ -12,18 +12,22 @@
 	<noscript>You need to enable JavaScript to run this app.</noscript>
 	<div id="root"></div>
 
-	<script src="~/static/js/bundle.js"></script>
-	<script defer>
-		(function () {
-			console.log("clicked");
+	<script src="~/static/js/bundle.js" defer></script>
+	@* <script src="main.js" defer></script> *@
+	<script src="ipc.js" defer></script>
 
-			const { ipcRenderer } = require("electron");
-			document.getElementById("new-window").addEventListener("click", () => {
-				console.log("clicked-triggered");
-				ipcRenderer.send("new-window");
-			});
-		});
-	</script>
+	@* <button class="btn-b" id="async"> test </button> *@
+
+	@* <script defer>
+		const { ipcRenderer } = require("electron");
+		
+		document.getElementById("async").addEventListener("click", triggered);
+
+		function triggered() {
+			console.log("triggered");
+			ipcRenderer.send("new-window");
+		}
+	</script> *@
 </body>
 
 </html>

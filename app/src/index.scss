@@ -37,7 +37,7 @@ $font-size-emphasis: 14px;
 }
 
 @mixin use-focus {
-	&focus,
+	&:focus,
 	&:focus-within {
 		outline: none;
 	}
@@ -74,12 +74,11 @@ $font-size-emphasis: 14px;
 @mixin onActive {
 	&:active {
 		filter: brightness(95%);
-		// transform: scale(0.97, 0.97);
 	}
 }
 
-// element state combinations
 @mixin elementState($class) {
+	// element state combinations
 	@include onHover($class);
 	@include onActive();
 }
@@ -118,7 +117,7 @@ $font-size-emphasis: 14px;
 	color: $color;
 	fill: $color;
 	background-color: $primary-color;
-	
+
 	overflow: hidden;
 	border: none;
 	display: inline-block;
@@ -135,17 +134,10 @@ $font-size-emphasis: 14px;
 
 @mixin card-default {
 	@include no-select();
-	// @include shadow();
 	@include mard(10px, 20px);
 
-	z-index: 0;
 	border-radius: 2px;
 	background-color: $background-accent;
-
-	// &:hover {
-	// 	// z-index: 0;
-	// 	// transform: translateY(-2px);
-	// }
 }
 
 // ==========================
@@ -211,7 +203,6 @@ $font-size-emphasis: 14px;
 
 .disabled {
 	cursor: not-allowed;
-	// filter: grayscale(100%) brightness(90%);
 
 	&:hover,
 	&:active,
@@ -219,13 +210,16 @@ $font-size-emphasis: 14px;
 	&:focus-visible,
 	&:focus-within {
 		cursor: not-allowed;
-		// filter: grayscale(100%);
 	}
 }
 
 // # Cards
 .card {
 	@include card-default;
+}
+
+.c-container {
+	background-color: unset;
 }
 
 .c-item {
@@ -325,6 +319,114 @@ h5 {
 
 h6 {
 	font-size: 11px;
+}
+
+input {
+	background-color: $background-accent;
+	color: $color;
+	// width: 100%;
+}
+
+input[type="button"],
+input[type="file"],
+input[type="text"],
+input[type="reset"],
+select {
+	@include btn-default();
+}
+
+option:nth-child(n) {
+	// FIXME: no work
+	&:hover {
+		background: $primary-color;
+	}
+}
+
+textarea {
+	@include btn-default();
+	overflow-y: scroll;
+
+	&::-webkit-resizer {
+		// border-radius: 0px 0px 100% 0px ;
+		background-color: $background-accent;
+	}
+}
+
+.ta-v {
+	resize: vertical;
+}
+
+.ta-none {
+	resize: none;
+}
+
+input[type="range"] {
+	@include btn-default();
+	@include mard(unset, unset);
+	// appearance: none;
+	background: unset;
+	margin: 3px 8px;
+	// width: 100%;
+	
+	// &::-webkit-slider-runnable-track {
+	// 	border-radius: 100px;
+	// 	height: 10px;
+	// }
+	
+	// &::-webkit-slider-thumb {
+	// 	FIXME: no work
+	// 	appearance: none;
+	// 	@include wight(15px, 15px);
+	// 	margin-top: 0;
+	// }
+}
+
+input::file-selector-button {
+	display: none;
+}
+
+input[type="checkbox"] {
+	@include wight(20px, 20px);
+	@include mard(auto, auto);
+	border: 1px solid $color-accent;
+	appearance: none;
+	border-radius: 3px;
+	background-color: $background-accent;
+
+	&:checked {
+		background-color: $primary-color;
+		border-color: $primary-accent;
+	}
+
+	@include use-focus();
+}
+
+input[type="number"] {
+	@include btn-default();
+
+	&::-webkit-inner-spin-button,
+	::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+	}
+}
+
+// FIXME: it no work
+input[type="radio"] {
+	@include use-focus();
+	@include mard(auto, auto);
+	@include wight(15px, 15px);
+	// border: 2px solid #ccc;
+	// border-radius: 100%;
+	// background-color: #fff;
+	// color: #000 !important;
+	// outline: none !important;
+	// box-shadow: none !important;
+
+	// &:checked {
+	// 	background-color: #2e003c !important;
+	// 	border-color: #f36721 !important;
+	// 	color: #ffffff !important;
+	// }
 }
 
 body {

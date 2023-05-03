@@ -2,7 +2,7 @@ import React from 'react';
 
 interface Props {
     htmlContent: string;
-    wrapperClass: string
+    wrapperClass?: string
 }
 
 const ButtonRaw: React.FC<Props> = ({ htmlContent, wrapperClass }) => {

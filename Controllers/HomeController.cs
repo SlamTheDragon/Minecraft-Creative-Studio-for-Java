@@ -8,7 +8,6 @@ namespace MinecraftStudio.Controllers
     {
         public IActionResult Index()
         {
-
             string viewPath = $"https://bit.ly/slamthedragon";
 
             Electron.IpcMain.On("new-window", async (args) =>

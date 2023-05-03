@@ -1,4 +1,3 @@
-import Button from '../components/common/Button/Button';
 import StatusBar from '../components/bars/StatusBar';
 import ThemePlayground from '../components/panels/ThemePlayground';
 import '../index.scss'
