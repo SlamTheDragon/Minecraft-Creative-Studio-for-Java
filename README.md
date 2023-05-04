@@ -4,7 +4,7 @@
 <br/>
 
 ## Development Requirements
-This project mainly needs [`.NET 6.0 SDK`](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and the latest [`Node.JS`](https://nodejs.org/en) installed in order to get started.
+This project mainly needs [`.NET 6.0.408 SDK`](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and the latest [`Node.JS`](https://nodejs.org/en) installed in order to get started.
 
 ### Install the following ASP.NET Core Project Dependencies
 - [ElectronNET.API](https://github.com/ElectronNET/Electron.NET)

@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API;
+using Microsoft.AspNetCore.SignalR;
+using System.Threading.Tasks;
 
 // Copied from ElectronNET Demo
 namespace MinecraftStudio.Controllers
@@ -22,5 +24,10 @@ namespace MinecraftStudio.Controllers
         {
             return View();
         }
+
+        // public async Task SendMessage(string user, string message)
+        // {
+        //     // await Clients.All.SendAsync("ReceiveMessage", user, message);
+        // }
     }
 }

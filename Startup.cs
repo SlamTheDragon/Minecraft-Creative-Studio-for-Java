@@ -1,10 +1,5 @@
 ﻿using ElectronNET.API;
 using ElectronNET.API.Entities;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using MinecraftStudio.Register;
 
 
@@ -35,12 +30,15 @@ namespace MinecraftStudio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            services.AddSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // checks if the hosting environment is set to "Development".
+            // If so, it adds a developer exception page middleware that displays detailed information about
+            // errors that occur during development.
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -73,6 +71,8 @@ namespace MinecraftStudio
 
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseWebSockets();
 
             if (HybridSupport.IsElectronActive)
             {

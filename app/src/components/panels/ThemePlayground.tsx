@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as Settings } from '@material-design-icons/svg/filled/settings.svg';
 import { ReactComponent as Home } from '@material-design-icons/svg/filled/home.svg';
 import { ReactComponent as Info } from '@material-design-icons/svg/outlined/info.svg';
@@ -6,6 +6,10 @@ import { useNavigate } from "react-router-dom";
 import Button from "../common/Button/Button";
 import ThemeSwitcher from "../custom/ThemeSwitcher/ThemeSwitcher";
 import Modal from "../common/Modal/Modal";
+import { ConnectionManager } from "../program/ConnectionManager";
+import { ConnectionState } from "../program/ConnectionState";
+// import { Events } from "../program/Events";
+import { socket } from "../../socket";
 
 
 export default function ThemePlayground() {
@@ -47,6 +51,40 @@ export default function ThemePlayground() {
         });
     };
 
+    /***************************************************************/
+
+    interface FooEvent {
+        e: Array<[]>
+    }
+
+    const [isConnected, setIsConnected] = useState(socket.connected);
+    const [fooEvents, setFooEvents] = useState<FooEvent[]>([]);
+
+    useEffect(() => {
+        function onConnect() {
+            setIsConnected(true);
+        }
+
+        function onDisconnect() {
+            setIsConnected(false);
+        }
+
+        function onFooEvent(e: FooEvent) {
+            setFooEvents(previous => [...previous, e]);
+        }
+
+        socket.on('connect', onConnect);
+        socket.on('disconnect', onDisconnect);
+        socket.on('foo', onFooEvent);
+
+        return () => {
+            socket.off('connect', onConnect);
+            socket.off('disconnect', onDisconnect);
+            socket.off('foo', onFooEvent);
+        };
+    }, []);
+
+
     return (
         <>
             <Modal isOpen={showModal} onClose={closeModal} onMouseEnter={handleMouseEnter} modalTitle={"Modal Title"}>
@@ -54,6 +92,11 @@ export default function ThemePlayground() {
             </Modal>
 
             <div className="viewport" style={{ overflowY: "scroll" }}>
+
+                <ConnectionState isConnected={isConnected} />
+                {/* <Events events={fooEvents} /> */}
+                <ConnectionManager />
+
 
                 <div className="" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start", padding: "50px", height: "40%" }}>
                     <h1>
