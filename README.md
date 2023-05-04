@@ -52,4 +52,4 @@ Follow these steps to get started developing
     
     <br/>
 
-    > The project author does not have enough skillset to properly develop this desktop application smoothly as what he have envisioned before [Minecraft Preview Editor](https://learn.microsoft.com/en-us/minecraft/creator/documents/editorinstallation) came out. If you wish to contribute to this project feel free to open any issues or pull requests.
+    > The project author does not have enough skillset to properly develop this desktop application smoothly as what he have envisioned before [Minecraft Preview Editor](https://learn.microsoft.com/en-us/minecraft/creator/documents/editorinstallation) came out. If you wish to contribute to this project feel free to open any issues or pull requests or Join us with the discussion in this repository's [Discussions](https://github.com/SlamTheDragon/Minecraft-Creative-Studio-for-Java/discussions) tab.
