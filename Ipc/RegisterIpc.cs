@@ -10,6 +10,7 @@ namespace MinecraftStudio.Register
         private Dictionary<string, Action<string, Object>> mRegister = new Dictionary<string, Action<string, Object>>();
         private RegisterIpc()
         {
+
         }
         public void Register()
         {
@@ -23,6 +24,7 @@ namespace MinecraftStudio.Register
             }
             MenuCreator.CreateMenus(false);
         }
+        
         private void Reply(string ipc, params Object[] data)
         {
             var mainWindow = Electron.WindowManager.BrowserWindows.First();
