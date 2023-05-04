@@ -1,12 +1,8 @@
 ﻿using ElectronNET.API;
 using ElectronNET.API.Entities;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using MinecraftStudio.Register;
 
+// TODO: Add Websockets for handling DOM events and Backend Events
 
 namespace MinecraftStudio
 {
