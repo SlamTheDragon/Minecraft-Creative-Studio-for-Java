@@ -1,22 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API;
-using Microsoft.AspNetCore.SignalR;
-using System.Threading.Tasks;
 
 // Copied from ElectronNET Demo
+// to be revised
 namespace MinecraftStudio.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public async Task<IActionResult> IndexAsync()
         {
-            string viewPath = $"https://bit.ly/slamthedragon";
+            var viewPath = $"https://bit.ly/slamthedragon";
 
+            /*****************************************************************/
+            //
+            //  Custom WebSocket Middleware will be used instead before
+            //  reaching in ElectronNET's API
+            //
+            /*****************************************************************/
             Electron.IpcMain.On("new-window", async (args) =>
             {
                 await Electron.WindowManager.CreateWindowAsync(viewPath);
             });
-            
+
             return View();
         }
 
@@ -24,10 +29,5 @@ namespace MinecraftStudio.Controllers
         {
             return View();
         }
-
-        // public async Task SendMessage(string user, string message)
-        // {
-        //     // await Clients.All.SendAsync("ReceiveMessage", user, message);
-        // }
     }
 }

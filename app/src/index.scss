@@ -1,3 +1,8 @@
+// =====================================================
+// [    Mini Boostrap for Minecraft Creative Studio    ]
+// =====================================================
+// Maintained by: SlamTheDragon
+
 @import "./styling/theme.scss";
 
 // ==========================
@@ -147,6 +152,14 @@ $font-size-emphasis: 14px;
 // # Buttons
 .btn {
 	@include btn-default();
+
+	// duplicate
+	&:disabled,
+	&[disabled] {
+		cursor: not-allowed;
+		filter: none;
+		opacity: 0.5;
+	}
 }
 
 .btn-a {
@@ -295,6 +308,13 @@ $font-size-emphasis: 14px;
 		border: 0px none #ffffff;
 		@include onHover(0);
 	}
+
+	&:disabled,
+	&[disabled] {
+		cursor: not-allowed;
+		filter: none;
+		opacity: 0.5;
+	}
 }
 
 h1 {
@@ -328,11 +348,20 @@ input {
 }
 
 input[type="button"],
+input[type="submit"],
 input[type="file"],
 input[type="text"],
 input[type="reset"],
 select {
 	@include btn-default();
+
+	// duplicate
+	&:disabled,
+	&[disabled] {
+		cursor: not-allowed;
+		filter: none;
+		opacity: 0.5;
+	}
 }
 
 option:nth-child(n) {
@@ -367,12 +396,12 @@ input[type="range"] {
 	background: unset;
 	margin: 3px 8px;
 	// width: 100%;
-	
+
 	// &::-webkit-slider-runnable-track {
 	// 	border-radius: 100px;
 	// 	height: 10px;
 	// }
-	
+
 	// &::-webkit-slider-thumb {
 	// 	FIXME: no work
 	// 	appearance: none;

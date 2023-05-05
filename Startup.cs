@@ -1,6 +1,7 @@
 ﻿using ElectronNET.API;
 using ElectronNET.API.Entities;
 using MinecraftStudio.Register;
+using WebSocketServer.Middleware;
 
 // TODO: Add Websockets for handling DOM events and Backend Events
 
@@ -31,6 +32,7 @@ namespace MinecraftStudio
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+            services.AddWebSocketManager();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,37 +53,23 @@ namespace MinecraftStudio
             {
                 browserWindow.SetMinimumSize(800, 600);
             });
-            
+
             app.UseRouting();
+            app.UseWebSockets();
+            app.UseWebSocketServer();
 
             app.UseEndpoints(endpoints =>
             {
-                // ============================================================================================
-                // This code configures an endpoint to handle incoming HTTP requests.
-                // In particular, it maps the URL pattern to a specific controller and action method.
-                //
-                // In the URL pattern, "{ controller }" and "{ action }" are placeholders for the controller
-                // and action names, respectively.The optional "{ id }"
-                // parameter can be used to pass additional information to the action method.
-                //
-                // So, for example, if the incoming URL is http://example.com/Products/Details/5, this would
-                // map to the Details action method in the ProductsController class, with a parameter of id set
-                // to 5. If no controller or action is specified in the URL, it would default to the Index
-                // action of the HomeController class.
-                // ============================================================================================
-
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseWebSockets();
-
             if (HybridSupport.IsElectronActive)
             {
-                ElectronBootstrap();
+                Window();
             }
         }
 
-        public async void ElectronBootstrap()
+        public async void Window()
         {
             var browserWindow = await Electron.WindowManager.CreateWindowAsync(new BrowserWindowOptions
             {
