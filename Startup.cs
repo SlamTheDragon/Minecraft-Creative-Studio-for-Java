@@ -49,10 +49,10 @@ namespace MinecraftStudio
 
             app.UseStaticFiles();
 
-            Electron.WindowManager.BrowserWindows.ToList().ForEach(browserWindow =>
-            {
-                browserWindow.SetMinimumSize(800, 600);
-            });
+            // Electron.WindowManager.BrowserWindows.ToList().ForEach(browserWindow =>
+            // {
+            //     browserWindow.SetMinimumSize(800, 600);
+            // });
 
             app.UseRouting();
             app.UseWebSockets();

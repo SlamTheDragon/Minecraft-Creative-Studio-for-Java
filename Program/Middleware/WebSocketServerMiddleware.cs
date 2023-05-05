@@ -58,7 +58,7 @@ namespace WebSocketServer.Middleware
             else
             {
                 // System.Console.WriteLine("[WEBSOCKET] Hello from the 2rd request delagate");
-                // await _next(context);
+                await _next(context);
             }
         }
 
