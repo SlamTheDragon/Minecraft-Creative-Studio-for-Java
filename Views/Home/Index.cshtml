@@ -29,6 +29,8 @@
 		<p id="stateLabel">Ready To Connect</p>
 		<p id="connIDLabel">ConnID: n/a</p>
 
+		<button class="btn" id="async"> Open Another Window </button>
+
 		<div>
 			<label for="connectionURL">WebSocket Server Url</label>
 			<input id="connectionURL" />
@@ -79,6 +81,15 @@
 		var closeButton = document.getElementById("closeButton");
 		var recipients = document.getElementById("recipients");
 		var ConnID = document.getElementById("connIDLabel");
+
+		const { ipcRenderer } = require("electron");
+
+		document.getElementById("async").addEventListener("click", triggered);
+
+		function triggered() {
+			console.log("triggered");
+			ipcRenderer.send("new-window");
+		}
 
 		connectionURL.value = "ws://localhost:8001";
 

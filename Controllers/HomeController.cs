@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API;
 using System.Threading.Tasks;
+using ElectronNET.API.Entities;
 
 // Copied from ElectronNET Demo
 // to be revised
@@ -14,7 +15,19 @@ namespace MinecraftStudio.Controllers
 
             Electron.IpcMain.On("new-window", async (args) =>
             {
-                await Electron.WindowManager.CreateWindowAsync(viewPath);
+                await Electron.WindowManager.CreateWindowAsync
+                (
+                    new BrowserWindowOptions
+                    {
+                        // Frame = false,
+                        Maximizable = false,
+                        Minimizable = false,
+                        Resizable = false,
+                        Center = true,
+                        SkipTaskbar = true
+                    },
+                    viewPath
+                );
             });
 
             return View();

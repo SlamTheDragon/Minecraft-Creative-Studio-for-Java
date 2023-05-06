@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using System.Text.Json;
 using System.Linq;
+using MinecraftStudio.Internal.Logging;
 
 namespace WebSocketServer.Middleware
 {
@@ -27,8 +28,9 @@ namespace WebSocketServer.Middleware
             if (context.WebSockets.IsWebSocketRequest)
             {
                 WebSocket webSocket = await context.WebSockets.AcceptWebSocketAsync();
-                Console.WriteLine("[WEBSOCKET] Websocket Connected");
+                InternalLog.Info("Websocket Connected", Origin.SERVER);
 
+                WriteRequestParam(context);
                 var ConnectionID = _manager.AddSocket(webSocket);
                 await SendConnectionIDAsync(webSocket, ConnectionID);
 
@@ -36,8 +38,7 @@ namespace WebSocketServer.Middleware
                 {
                     if (result.MessageType == WebSocketMessageType.Text)
                     {
-                        System.Console.Write("[WEBSOCKET] Recieved ");
-                        System.Console.Write($"Message: {Encoding.UTF8.GetString(buffer, 0, result.Count)}");
+                        InternalLog.Info("Recieved " + $"Message: {Encoding.UTF8.GetString(buffer, 0, result.Count)}", Origin.SERVER);
 
                         await RouteJSONMessageAsync(Encoding.UTF8.GetString(buffer, 0, result.Count));
                         return;
@@ -46,7 +47,7 @@ namespace WebSocketServer.Middleware
                     {
                         var id = _manager.GetAllSockets().FirstOrDefault(s => s.Value == webSocket).Key;
 
-                        System.Console.WriteLine("[WEBSOCKET] Connection Closed");
+                        InternalLog.Info("Connection Closed", Origin.SERVER);
 
                         _manager.GetAllSockets().TryRemove(id, out WebSocket sock);
                         await sock!.CloseAsync(result.CloseStatus!.Value, result.CloseStatusDescription, CancellationToken.None);
@@ -64,7 +65,9 @@ namespace WebSocketServer.Middleware
 
         private async Task SendConnectionIDAsync(WebSocket socket, string ConnectionID)
         {
-            var buffer = Encoding.UTF8.GetBytes("[CLIENT] Connection ID: " + ConnectionID);
+            var buffer = Encoding.UTF8.GetBytes("Connection ID: " + ConnectionID);
+            InternalLog.Info("Connection ID: " + ConnectionID, Origin.SERVER);
+
             await socket.SendAsync(buffer, WebSocketMessageType.Text, true, CancellationToken.None);
         }
 
@@ -83,14 +86,14 @@ namespace WebSocketServer.Middleware
 
         public void WriteRequestParam(HttpContext context)
         {
-            System.Console.WriteLine("[TRACE] Request Method: " + context.Request.Method);
-            System.Console.WriteLine("[TRACE] Request Protocol: " + context.Request.Protocol);
+            InternalLog.Debug("[TRACE] Request Method: " + context.Request.Method, Origin.SERVER);
+            InternalLog.Debug("[TRACE] Request Protocol: " + context.Request.Protocol, Origin.SERVER);
 
             if (context.Request.Headers != null)
             {
                 foreach (var h in context.Request.Headers)
                 {
-                    System.Console.WriteLine("[TRACE] " + h.Key + " : " + h.Value);
+                    InternalLog.Debug("[TRACE] " + h.Key + " : " + h.Value, Origin.SERVER);
                 }
             }
         }
@@ -99,26 +102,32 @@ namespace WebSocketServer.Middleware
         {
             try
             {
+                // Deserialize the incoming message into a JsonElement object
                 var routeObj = JsonSerializer.Deserialize<JsonElement>(message);
 
+                // Check if the message has a "To" property with a valid GUID value
                 if (routeObj.TryGetProperty("To", out var toProperty) && toProperty.ValueKind == JsonValueKind.String && Guid.TryParse(toProperty.GetString(), out Guid guidOutput))
                 {
-                    System.Console.WriteLine(" Type: Targeted");
+                    // Find the WebSocket connection corresponding to the specified GUID
+
+                    InternalLog.Info("Message Type: Targeted", Origin.SERVER);
                     var sock = _manager.GetAllSockets().FirstOrDefault(s => s.Key == toProperty.GetString());
 
                     if (sock.Value != null && sock.Value.State == WebSocketState.Open)
                     {
+                        // Send the message to the specified WebSocket connection
                         await sock.Value.SendAsync(Encoding.UTF8.GetBytes(routeObj.GetProperty("Message").GetString()!),
                             WebSocketMessageType.Text, true, CancellationToken.None);
                     }
                     else
                     {
-                        System.Console.WriteLine("[WEBSOCKET] Invalid Recipient" + routeObj);
+                        InternalLog.Warn("Invalid Recipient" + routeObj, Origin.SERVER);
                     }
                 }
                 else
                 {
-                    System.Console.WriteLine(" Type: Broadcast");
+                    // Broadcast the message to all connected WebSocket clients
+                    InternalLog.Info("Message Type: Broadcast", Origin.SERVER);
                     var messageProperty = routeObj.GetProperty("Message");
 
                     foreach (var sock in _manager.GetAllSockets())
@@ -133,7 +142,7 @@ namespace WebSocketServer.Middleware
             }
             catch (Exception ex)
             {
-                System.Console.WriteLine("[WEBSOCKET] Error handling message: " + ex.Message);
+                InternalLog.Info("Error handling message: " + ex.Message, Origin.SERVER);
             }
         }
     }

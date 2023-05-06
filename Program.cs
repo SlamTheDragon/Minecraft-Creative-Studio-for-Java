@@ -1,6 +1,6 @@
 using ElectronNET.API;
 using Microsoft.AspNetCore;
-
+using MinecraftStudio.Internal.Logging;
 
 namespace MinecraftStudio
 {
@@ -8,6 +8,7 @@ namespace MinecraftStudio
     {
         public static void Main(string[] args)
         {
+            InternalLog.Info("Starting Application", Origin.MAIN);
             CreateWebHostBuilder(args).Build().Run();
         }
 
