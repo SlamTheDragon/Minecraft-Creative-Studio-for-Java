@@ -57,10 +57,6 @@ namespace MinecraftStudio.Internal.Logging
 
         private static readonly Logger instance = new Logger();
 
-        private string CurrentDirectory { get; set; }
-
-        private string FileName { get; set; }
-
         private string FilePath { get; set; }
 
         public Logger()

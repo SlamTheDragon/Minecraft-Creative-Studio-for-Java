@@ -15,9 +15,16 @@ namespace MinecraftStudio
         public static IWebHostBuilder CreateWebHostBuilder(string[] args)
         {
             return WebHost.CreateDefaultBuilder(args)
-                .ConfigureLogging((hostingContext, logging) => { logging.AddConsole(); })
+                // .ConfigureLogging((hostingContext, logging) => {
+                //     logging.ClearProviders();
+                //     logging.AddDebug();
+                //     logging.AddEventLog();
+                //     logging.AddConsole(); 
+                // })
                 .UseElectron(args)
                 .UseStartup<Startup>();
         }
+
+        // TODO: add shutdown handlers
     }
 }
