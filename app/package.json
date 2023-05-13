@@ -1,93 +1,45 @@
 {
-	"name": "minecraft-creative-studio-for-java",
-	"version": "0.0.1",
-	"author": "SLamTheDragon",
-	"license": "MIT",
-	"dependencies": {
-		"@material-design-icons/svg": "^0.14.5",
-		"http-proxy-middleware": "^2.0.6",
-		"merge": "^2.1.1",
-		"oidc-client": "^1.11.5",
-		"react": "^18.2.0",
-		"react-dom": "^18.2.0",
-		"react-draggable": "^4.4.5",
-		"react-resizable": "^3.0.5",
-		"react-router-bootstrap": "^0.26.1",
-		"react-router-dom": "^6.3.0",
-		"react-scripts": "^5.0.1",
-		"reactstrap": "^9.1.1",
-		"rimraf": "^3.0.2",
-		"sass": "^1.61.0",
-		"socket.io": "^4.6.1",
-		"socket.io-client": "^4.6.1",
-		"web-vitals": "^2.1.4",
-		"workbox-background-sync": "^6.5.3",
-		"workbox-broadcast-update": "^6.5.3",
-		"workbox-cacheable-response": "^6.5.3",
-		"workbox-core": "^6.5.3",
-		"workbox-expiration": "^6.5.3",
-		"workbox-google-analytics": "^6.5.3",
-		"workbox-navigation-preload": "^6.5.3",
-		"workbox-precaching": "^6.5.3",
-		"workbox-range-requests": "^6.5.3",
-		"workbox-routing": "^6.5.3",
-		"workbox-strategies": "^6.5.3",
-		"workbox-streams": "^6.5.3"
-	},
-	"devDependencies": {
-		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/react": "^14.0.0",
-		"@types/customize-cra": "^1.0.4",
-		"@types/jest": "^29.5.0",
-		"@types/react": "^18.0.33",
-		"@types/react-resizable": "^3.0.4",
-		"ajv": "^8.11.0",
-		"cross-env": "^7.0.3",
-		"eslint": "^8.18.0",
-		"eslint-config-react-app": "^7.0.1",
-		"eslint-plugin-flowtype": "^8.0.3",
-		"eslint-plugin-import": "^2.26.0",
-		"eslint-plugin-jsx-a11y": "^6.6.0",
-		"eslint-plugin-react": "^7.30.1",
-		"nan": "^2.16.0",
-		"react-app-rewired": "^2.2.1",
-		"typescript": "^4.7.4"
-	},
-	"overrides": {
-		"autoprefixer": "10.4.5"
-	},
-	"resolutions": {
-		"css-what": "^5.0.1",
-		"nth-check": "^3.0.1"
-	},
-	"scripts": {
-		"prestart": "node aspnetcore-https && node aspnetcore-react",
-		"start": "react-app-rewired start",
-		"build": "react-app-rewired build",
-		"test": "cross-env CI=true react-scripts test --env=jsdom",
-		"eject": "react-scripts eject",
-		"lint": "eslint ./src/"
-	},
-	"eslintConfig": {
-		"extends": [
-			"react-app"
-		]
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"browser": {
-		"fs": false,
-		"os": false,
-		"path": false
-	}
+  "name": "app",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.29",
+    "@types/react": "^18.2.6",
+    "@types/react-dom": "^18.2.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.11.1",
+    "react-scripts": "5.0.1",
+    "sass": "^1.62.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
 }
