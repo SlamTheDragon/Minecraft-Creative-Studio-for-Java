@@ -4,7 +4,7 @@
 	"author": "SLamTheDragon",
 	"license": "MIT",
 	"dependencies": {
-		"@material-design-icons/svg": "^0.14.5",
+		"@material-design-icons/svg": "^0.14.7",
 		"@microsoft/signalr": "^7.0.5",
 		"http-proxy-middleware": "^2.0.6",
 		"merge": "^2.1.1",
