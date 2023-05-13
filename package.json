@@ -22,7 +22,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run build && npm run stage",
+    "stage": "git add build && git commit -m \"deploy\" && echo use `npm run push` to push to deployment branch.",
+    "push": "git subtree push --prefix build origin github-pages-deploy"
   },
   "eslintConfig": {
     "extends": [
