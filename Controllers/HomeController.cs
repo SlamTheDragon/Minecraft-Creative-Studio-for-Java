@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ElectronNET.API;
-using Microsoft.AspNetCore.SignalR;
 using System.Threading.Tasks;
+using ElectronNET.API.Entities;
 
 // Copied from ElectronNET Demo
+// to be revised
 namespace MinecraftStudio.Controllers
 {
     public class HomeController : Controller
@@ -14,9 +15,21 @@ namespace MinecraftStudio.Controllers
 
             Electron.IpcMain.On("new-window", async (args) =>
             {
-                await Electron.WindowManager.CreateWindowAsync(viewPath);
+                await Electron.WindowManager.CreateWindowAsync
+                (
+                    new BrowserWindowOptions
+                    {
+                        // Frame = false,
+                        Maximizable = false,
+                        Minimizable = false,
+                        Resizable = false,
+                        Center = true,
+                        SkipTaskbar = true
+                    },
+                    viewPath
+                );
             });
-            
+
             return View();
         }
 
@@ -24,10 +37,5 @@ namespace MinecraftStudio.Controllers
         {
             return View();
         }
-
-        // public async Task SendMessage(string user, string message)
-        // {
-        //     // await Clients.All.SendAsync("ReceiveMessage", user, message);
-        // }
     }
 }

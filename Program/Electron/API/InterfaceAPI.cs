@@ -1,28 +1,29 @@
 using ElectronNET.API;
-using MinecraftStudio.Menu;
 
-
-namespace MinecraftStudio.Register
+// Electron Communicator
+// Configure methods you want to pass to the renderer
+namespace MinecraftStudio.InterfaceAPI
 {
-    public class RegisterIpc
+    public class Interface
     {
-        public static RegisterIpc Impl = new RegisterIpc();
-        private Dictionary<string, Action<string, Object>> mRegister = new Dictionary<string, Action<string, Object>>();
-        private RegisterIpc()
+        public static Interface push = new Interface();
+        private Dictionary<string, Action<string, Object>> menuRegistrator = new Dictionary<string, Action<string, Object>>();
+        private Interface()
         {
-
+            
         }
         public void Register()
         {
-            mRegister.Add("menu-for-webview", (Key, args) => { MenuCreator.CreateMenus(true); });
-            foreach (var item in mRegister)
+            menuRegistrator.Add("menu-for-webview", (Key, args) => { MenuBar.MenuBarCreator.CreateMenus(true); });
+            foreach (var item in menuRegistrator)
             {
                 if (item.Key.StartsWith("webview-") == false)
                 {
                     Electron.IpcMain.On(item.Key, (args) => { item.Value(item.Key, args); });
                 }
             }
-            MenuCreator.CreateMenus(false);
+
+            MenuBar.MenuBarCreator.CreateMenus(true);
         }
         
         private void Reply(string ipc, params Object[] data)
@@ -30,10 +31,12 @@ namespace MinecraftStudio.Register
             var mainWindow = Electron.WindowManager.BrowserWindows.First();
             Electron.IpcMain.Send(mainWindow, ipc + "-reply", data);
         }
+
         public void OpenDevToolsWebView()
         {
             Reply("open-dev-tools-webview");
         }
+        
         public void BrowserBackWebView()
         {
             Reply("browser-back-webview");

@@ -1,5 +1,5 @@
 import { ReactComponent as Close } from '@material-design-icons/svg/filled/close.svg';
-import React from 'react';
+import React, { useState } from 'react';
 import Button from '../Button/Button';
 import './Modal.scss';
 
@@ -12,32 +12,37 @@ interface ModalProps {
     onMouseLeave?: () => void
 }
 
-export default function Modal({ modalTitle, isOpen, onClose, children, onMouseEnter, onMouseLeave }: ModalProps) {
-    if (!isOpen) return null;
+
+export default function Modal(props: ModalProps) {
+    // const [showModal, setShowModal] = useState(false);
+
+    if (!props.isOpen) return null;
 
     return (
-        <div className="modal" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+        <div className="modal" onMouseEnter={props.onMouseEnter} onMouseLeave={props.onMouseLeave}>
             
             <div className="modal-content card">
                 {/* 
                     HEADER
                 */}
                 <div className='modal-header'>
-                    <h3>{modalTitle}</h3>
-                    <Button classItem={'btn-b'} onclick={onClose}><Close /></Button>
+                    <h3>{props.modalTitle}</h3>
+                    <Button classItem={'btn-b'} onclick={props.onClose}><Close /></Button>
                 </div>
 
                 {/* 
                     MODAL CONTENT
                 */}
-                {children}
+                {props.children}
             </div>
 
-            <div className="modal-background" onClick={onClose} />
+            <div className="modal-background" onClick={props.onClose} />
         </div>
     );
 };
 
+
+// export { showModal, setShowModal }
 
 /*=======================[ INTERNAL USAGE ]=======================*/
 

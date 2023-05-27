@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ReactComponent as Settings } from '@material-design-icons/svg/filled/settings.svg';
 import { ReactComponent as Home } from '@material-design-icons/svg/filled/home.svg';
 import { ReactComponent as Info } from '@material-design-icons/svg/outlined/info.svg';
@@ -6,10 +6,6 @@ import { useNavigate } from "react-router-dom";
 import Button from "../common/Button/Button";
 import ThemeSwitcher from "../custom/ThemeSwitcher/ThemeSwitcher";
 import Modal from "../common/Modal/Modal";
-import { ConnectionManager } from "../program/ConnectionManager";
-import { ConnectionState } from "../program/ConnectionState";
-// import { Events } from "../program/Events";
-import { socket } from "../../socket";
 
 
 export default function ThemePlayground() {
@@ -51,38 +47,140 @@ export default function ThemePlayground() {
         });
     };
 
-    /***************************************************************/
 
-    interface FooEvent {
-        e: Array<[]>
-    }
+    /*******************************************/ // Websocket Client
+    // let connectionURL = document.getElementById("connectionURL");
+    // let connectButton = document.getElementById("connectButton");
+    // let stateLabel = document.getElementById("stateLabel");
+    // let sendMessage = document.getElementById("sendMessage");
+    // let sendButton = document.getElementById("sendButton");
+    // let commsLog = document.getElementById("commsLog");
+    // let closeButton = document.getElementById("closeButton");
+    // let recipients = document.getElementById("recipients");
+    // let ConnID = document.getElementById("connIDLabel");
 
-    const [isConnected, setIsConnected] = useState(socket.connected);
-    const [fooEvents, setFooEvents] = useState<FooEvent[]>([]);
+    // connectionURL.value = "ws://localhost:8001";
 
-    useEffect(() => {
-        function onConnect() {
-            setIsConnected(true);
-        }
+    // connectButton.onclick = () => {
+    //     stateLabel.innerHTML = "Attempting to Connect...";
+    //     socket = new WebSocket(connectionURL.value);
+    //     socket.onopen = (event) => {
+    //         updateState();
+    //         commsLog.innerHTML += '<tr>' +
+    //             '<td colspan="3" style="background-color: #98ffb9;"> Connection opened.</td>' +
+    //             '</tr>';
+    //     };
 
-        function onDisconnect() {
-            setIsConnected(false);
-        }
+    //     socket.onclose = (event) => {
+    //         updateState();
+    //         commsLog.innerHTML += '<tr>' +
+    //             '<td colspan="3" style="background-color: #ff9090;"> Connection Closed. Code: ' + htmlEscape(event.code) +
+    //             ' Reason: ' + htmlEscape(event.reason) + '</td>' +
+    //             '</tr>';
+    //     };
 
-        function onFooEvent(e: FooEvent) {
-            setFooEvents(previous => [...previous, e]);
-        }
+    //     socket.onerror = updateState();
+    //     socket.onmessage = (event) => {
+    //         commsLog.innerHTML += '<tr>' +
+    //             '<td>Server</td>' +
+    //             '<td>Client</td>' +
+    //             '<td>' + htmlEscape(event.data) + '</td></tr>';
+    //         isConnID(event.data);
+    //     };
+    // };
 
-        socket.on('connect', onConnect);
-        socket.on('disconnect', onDisconnect);
-        socket.on('foo', onFooEvent);
+    // closeButton.onclick = () => {
+    //     closeSocketInfo()
+    //     socket.close(1000, "Closing from Client");
+    // }
 
-        return () => {
-            socket.off('connect', onConnect);
-            socket.off('disconnect', onDisconnect);
-            socket.off('foo', onFooEvent);
-        };
-    }, []);
+    // sendButton.onclick = () => {
+    //     closeSocketInfo()
+    //     var data = constructJSON()
+    //     socket.send(data);
+    //     commsLog.innerHTML += '<tr>' +
+    //         '<td>Server</td>' +
+    //         '<td>Client</td>' +
+    //         '<td>' + htmlEscape(data) + '</td></tr>';
+    // }
+
+    // function closeSocketInfo() {
+    //     if (!socket || socket.readyState !== WebSocket.OPEN) {
+    //         alert("Socket Not Connected");
+    //     } else {
+    //         return console.log("returned");
+    //     }
+    // }
+
+    // function isConnID(str) {
+    //     if (str.substring(0, 23) == "[CLIENT] Connection ID:") {
+    //         ConnID.innerHTML = "ConnID: " + str.substring(24, 61);
+    //     }
+    // }
+
+    // function constructJSON() {
+    //     return JSON.stringify({
+    //         "From": ConnID.innerHTML.substring(24, ConnID.innerHTML.length),
+    //         "To": recipients.value,
+    //         "Message": sendMessage.value
+    //     });
+    // }
+
+    // function htmlEscape(str) {
+    //     return str.toString()
+    //         .replace(/&/g, '&amp;')
+    //         .replace(/"/g, '&quot;')
+    //         .replace(/'/g, '&#39;')
+    //         .replace(/</g, '&lt;')
+    //         .replace(/>/g, '&gt;')
+    // };
+
+    // function updateState() {
+    //     function disable() {
+    //         sendMessage.disabled = true;
+    //         sendButton.disabled = true;
+    //         closeButton.disabled = true;
+    //         recipients.disabled = true;
+    //     };
+    //     function enable() {
+    //         sendMessage.disabled = false;
+    //         sendButton.disabled = false;
+    //         closeButton.disabled = false;
+    //         recipients.disabled = false;
+    //     };
+
+    //     connectionURL.disabled = true;
+    //     connectButton.disabled = true;
+
+    //     if (!socket) {
+    //         disable();
+    //     } else {
+    //         switch (socket.readyState) {
+    //             case WebSocket.CLOSED:
+    //                 stateLabel.innerHTML = "Closed";
+    //                 ConnID.innerHTML = "ConnID: n/a";
+    //                 disable();
+    //                 connectionURL.disable = false;
+    //                 connectButton.disable = false;
+    //                 break;
+
+    //             case WebSocket.CLOSING:
+    //                 stateLabel.innerHTML = "Closing...";
+    //                 disable();
+    //                 break;
+
+    //             case WebSocket.OPEN:
+    //                 stateLabel.innerHTML = "Open";
+    //                 enable();
+    //                 break;
+
+    //             default:
+    //                 stateLabel.innerHTML = "Unknown WebSocket State: " + htmlEscape(socket.readyState);
+    //                 disable()
+    //                 break;
+    //         }
+    //     }
+    // };
 
 
     return (
@@ -92,12 +190,6 @@ export default function ThemePlayground() {
             </Modal>
 
             <div className="viewport" style={{ overflowY: "scroll" }}>
-
-                <ConnectionState isConnected={isConnected} />
-                {/* <Events events={fooEvents} /> */}
-                <ConnectionManager />
-
-
                 <div className="" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "flex-start", padding: "50px", height: "40%" }}>
                     <h1>
                         Minecraft Studio Theme v1.1
@@ -132,6 +224,48 @@ export default function ThemePlayground() {
                         </span>
                     </div>
                 </div>
+
+                {/*
+                 <div className="card c-container">
+                    <h1>WebSocket | ReactJS Client Middleware Testing</h1>
+                    <p id="stateLabel">Ready To Connect</p>
+                    <p id="connIDLabel">Connection ID: n/a</p>
+
+                    <div>
+                        <label htmlFor="connectionURL">WebSocket Server Url</label>
+                        <input id="connectionURL" type="text" placeholder="ws://"/>
+                        <Button classItem={"btn"} idItem="connectButton">Connect</Button>
+                        <Button classItem={"btn"} idItem="closeButton" disabled={true}>Close Socket</Button>
+                    </div>
+
+                    <div>
+                        <label htmlFor="sendMessage">Message:</label>
+                        <input id="sendMessage" disabled type="text" />
+                        <Button classItem={"btn"} idItem="sendButton" disabled={true}>Send</Button>
+                    </div>
+
+                    <div>
+                        <label htmlFor="recipients">Recipient ID:</label>
+                        <input id="recipients" disabled type="text"/>
+                    </div>
+
+                    <h1>Communication Log</h1>
+                    <table style={{ width: "800px" }}>
+                        <thead>
+                            <tr>
+                                <td style={{ width: "100px" }}>From</td>
+                                <td style={{ width: "100px" }}>To</td>
+                                <td>Data</td>
+                            </tr>
+                        </thead>
+
+                        <tbody id="commsLog">
+
+                        </tbody>
+
+                    </table>
+                </div> 
+                */}
 
                 <div className="card c-container" style={{ display: "flex", flexDirection: "column", justifyContent: "flex-start", alignItems: "start" }}>
                     <h1>Inputs</h1>

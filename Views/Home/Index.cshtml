@@ -6,26 +6,215 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<title>Minecraft - Creative Studio For Java</title>
 	<link rel="stylesheet" href="static/css/styles.css">
+
+	@* removed when ready *@
+	<style>
+		td {
+			border: 1px solid black;
+		}
+
+		body {
+			background-color: var(--background);
+		}
+	</style>
 </head>
+
+@* TODO: Delete everything written here after rewriting the script in typescript. *@
 
 <body>
 	<noscript>You need to enable JavaScript to run this app.</noscript>
+
+	<div class="card c-container">
+		<h1>WebSocket | Index.cshtml Middleware Testing</h1>
+		<p id="stateLabel">Ready To Connect</p>
+		<p id="connIDLabel">ConnID: n/a</p>
+
+		<button class="btn" id="async"> Open Another Window </button>
+
+		<div>
+			<label for="connectionURL">WebSocket Server Url</label>
+			<input id="connectionURL" />
+			<button id="connectButton" type="submit">Connect</button>
+			<button id="closeButton" disabled>Close Socket</button>
+		</div>
+
+		<div>
+			<label for="sendMessage">Message:</label>
+			<input id="sendMessage" disabled />
+			<button id="sendButton" type="submit" disabled>Send</button>
+		</div>
+
+		<div>
+			<label for="recipients">Recipient ID:</label>
+			<input id="recipients" disabled />
+		</div>
+
+		<h1>Communication Log</h1>
+		<table style="width: 800px;">
+			<thead>
+				<tr>
+					<td style="width: 100px;">From</td>
+					<td style="width: 100px;">To</td>
+					<td>Data</td>
+				</tr>
+			</thead>
+
+			<tbody id="commsLog">
+
+			</tbody>
+
+		</table>
+	</div>
+
 	<div id="root"></div>
 
 	<script src="~/static/js/bundle.js" defer></script>
 
-	@* <button class="btn-b" id="async"> test </button> *@
+	@* remove when ready *@
+	<script>
+		var connectionURL = document.getElementById("connectionURL");
+		var connectButton = document.getElementById("connectButton");
+		var stateLabel = document.getElementById("stateLabel");
+		var sendMessage = document.getElementById("sendMessage");
+		var sendButton = document.getElementById("sendButton");
+		var commsLog = document.getElementById("commsLog");
+		var closeButton = document.getElementById("closeButton");
+		var recipients = document.getElementById("recipients");
+		var ConnID = document.getElementById("connIDLabel");
 
-	@* <script defer>
 		const { ipcRenderer } = require("electron");
-		
+
 		document.getElementById("async").addEventListener("click", triggered);
 
 		function triggered() {
 			console.log("triggered");
 			ipcRenderer.send("new-window");
 		}
-	</script> *@
+
+		connectionURL.value = "ws://localhost:8001";
+
+		connectButton.onclick = () => {
+			stateLabel.innerHTML = "Attempting to Connect...";
+			socket = new WebSocket(connectionURL.value);
+			socket.onopen = (event) => {
+				updateState();
+				commsLog.innerHTML += '<tr>' +
+					'<td colspan="3" style="background-color: #98ffb9;"> Connection opened.</td>' +
+					'</tr>';
+			};
+
+			socket.onclose = (event) => {
+				updateState();
+				commsLog.innerHTML += '<tr>' +
+					'<td colspan="3" style="background-color: #ff9090;"> Connection Closed. Code: ' + htmlEscape(event.code) +
+					' Reason: ' + htmlEscape(event.reason) + '</td>' +
+					'</tr>';
+			};
+
+			socket.onerror = updateState();
+			socket.onmessage = (event) => {
+				commsLog.innerHTML += '<tr>' +
+					'<td>Server</td>' +
+					'<td>Client</td>' +
+					'<td>' + htmlEscape(event.data) + '</td></tr>';
+				isConnID(event.data);
+			};
+		};
+
+		closeButton.onclick = () => {
+			closeSocketInfo()
+			socket.close(1000, "Closing from Client");
+		}
+
+		sendButton.onclick = () => {
+			closeSocketInfo()
+			var data = constructJSON()
+			socket.send(data);
+			commsLog.innerHTML += '<tr>' +
+				'<td>Server</td>' +
+				'<td>Client</td>' +
+				'<td>' + htmlEscape(data) + '</td></tr>';
+		}
+
+		function closeSocketInfo() {
+			if (!socket || socket.readyState !== WebSocket.OPEN) {
+				alert("Socket Not Connected");
+			} else {
+				return console.log("returned");
+			}
+		}
+
+		function isConnID(str) {
+			if (str.substring(0, 23) == "[CLIENT] Connection ID:") {
+				ConnID.innerHTML = "ConnID: " + str.substring(24, 61);
+			}
+		}
+
+		function constructJSON() {
+			return JSON.stringify({
+				"From": ConnID.innerHTML.substring(24, ConnID.innerHTML.length),
+				"To": recipients.value,
+				"Message": sendMessage.value
+			});
+		}
+
+		function htmlEscape(str) {
+			return str.toString()
+				.replace(/&/g, '&amp;')
+				.replace(/"/g, '&quot;')
+				.replace(/'/g, '&#39;')
+				.replace(/</g, '&lt;')
+				.replace(/>/g, '&gt;')
+		};
+
+		function updateState() {
+			function disable() {
+				sendMessage.disabled = true;
+				sendButton.disabled = true;
+				closeButton.disabled = true;
+				recipients.disabled = true;
+			};
+			function enable() {
+				sendMessage.disabled = false;
+				sendButton.disabled = false;
+				closeButton.disabled = false;
+				recipients.disabled = false;
+			};
+
+			connectionURL.disabled = true;
+			connectButton.disabled = true;
+
+			if (!socket) {
+				disable();
+			} else {
+				switch (socket.readyState) {
+					case WebSocket.CLOSED:
+						stateLabel.innerHTML = "Closed";
+						ConnID.innerHTML = "ConnID: n/a";
+						disable();
+						connectionURL.disable = false;
+						connectButton.disable = false;
+						break;
+
+					case WebSocket.CLOSING:
+						stateLabel.innerHTML = "Closing...";
+						disable();
+						break;
+
+					case WebSocket.OPEN:
+						stateLabel.innerHTML = "Open";
+						enable();
+						break;
+
+					default:
+						stateLabel.innerHTML = "Unknown WebSocket State: " + htmlEscape(socket.readyState);
+						disable()
+						break;
+				}
+			}
+		};
+	</script>
+
 </body>
 
 </html>

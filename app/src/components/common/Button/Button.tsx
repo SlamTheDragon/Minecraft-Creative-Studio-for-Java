@@ -10,19 +10,19 @@ interface ButtonInterface {
 }
 
 
-export default function Button({ idItem, onclick, children, classItem, disabled, tabIndex, style, onKeyDown }: ButtonInterface) {
+export default function Button(props: ButtonInterface) {
     return (
-        <button disabled={disabled}
-            id={idItem}
-            tabIndex={tabIndex}
-            className={classItem}
-            onClick={onclick}
-            onKeyDown={onKeyDown}
+        <button disabled={props.disabled}
+            id={props.idItem}
+            tabIndex={props.tabIndex}
+            className={props.classItem}
+            onClick={props.onclick}
+            onKeyDown={props.onKeyDown}
             // style={style} <- ? wha
 
         // NOTE Use useNavigate from `react-router-dom` if you want to use the button as a navigator.
         >
-            {children}
+            {props.children}
         </button>
     );
 }
