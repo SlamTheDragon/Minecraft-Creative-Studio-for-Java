@@ -12,9 +12,9 @@ interface ModalProps {
     onMouseLeave?: () => void
 }
 
-const [showModal, setShowModal] = useState(false);
 
 export default function Modal(props: ModalProps) {
+    // const [showModal, setShowModal] = useState(false);
 
     if (!props.isOpen) return null;
 
@@ -42,7 +42,7 @@ export default function Modal(props: ModalProps) {
 };
 
 
-export { showModal, setShowModal }
+// export { showModal, setShowModal }
 
 /*=======================[ INTERNAL USAGE ]=======================*/
 
