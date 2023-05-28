@@ -84,6 +84,7 @@ namespace WebSocketServer.Middleware
             }
         }
 
+        // DEBUG
         public void WriteRequestParam(HttpContext context)
         {
             InternalLog.Debug("[TRACE] Request Method: " + context.Request.Method, Origin.SERVER);
@@ -97,6 +98,7 @@ namespace WebSocketServer.Middleware
                 }
             }
         }
+
 
         public async Task RouteJSONMessageAsync(string message)
         {
@@ -140,9 +142,9 @@ namespace WebSocketServer.Middleware
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                InternalLog.Info("Error handling message: " + ex.Message, Origin.SERVER);
+                InternalLog.Info("Error handling message: " + e.Message, Origin.SERVER);
             }
         }
     }

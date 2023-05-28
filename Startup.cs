@@ -4,7 +4,7 @@ using System.Text;
 using ElectronNET.API;
 using ElectronNET.API.Entities;
 using Microsoft.AspNetCore.Hosting.Server.Features;
-using MinecraftStudio.InterfaceAPI;
+using MinecraftStudio.Interface;
 using MinecraftStudio.Internal.Logging;
 using WebSocketServer.Middleware;
 
@@ -24,12 +24,10 @@ namespace MinecraftStudio
         {
             services.AddMvc();
             services.AddWebSocketManager();
-            services.AddLogging();
         }
 
         private string TempPath { get; set; }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             // TODO: Move this bridge instructions
@@ -84,6 +82,8 @@ namespace MinecraftStudio
             InternalLog.Info("Starting Server", Origin.SERVER);
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAuthentication();
+            app.UseAuthorization();
             app.UseWebSockets();
             app.UseWebSocketServer();
             app.UseEndpoints(endpoints =>
@@ -139,8 +139,14 @@ namespace MinecraftStudio
             InternalLog.Info("Interface Started", Origin.INTERFACE);
             InternalLog.Info("Injecting necessary components...", Origin.INTERFACE);
 
-            Interface.push.Register();
+            InterfaceAPI.push.Register();
             InternalLog.Info("Done", Origin.INTERFACE);
+
+            browserWindow.OnClosed += () =>
+            {
+                InternalLog.Info("Shutting Down...", Origin.INTERFACE);
+                Electron.App.Quit();
+            };
         }
     }
 }
