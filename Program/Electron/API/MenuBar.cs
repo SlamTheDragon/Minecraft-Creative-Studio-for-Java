@@ -61,7 +61,7 @@ namespace MinecraftStudio.MenuBar
                                     Label = "Inner Back Button",
                                     Accelerator = "CmdOrCtrl+Shift+B",
                                     Visible = addWebViewItems,
-                                    Click = () => InterfaceAPI.Interface.push.BrowserBackWebView()
+                                    Click = () => Interface.InterfaceAPI.push.BrowserBackWebView()
                                 }
                             }
                         },

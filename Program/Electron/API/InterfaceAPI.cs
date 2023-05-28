@@ -2,13 +2,13 @@ using ElectronNET.API;
 
 // Electron Communicator
 // Configure methods you want to pass to the renderer
-namespace MinecraftStudio.InterfaceAPI
+namespace MinecraftStudio.Interface
 {
-    public class Interface
+    public class InterfaceAPI
     {
-        public static Interface push = new Interface();
+        public static InterfaceAPI push = new InterfaceAPI();
         private Dictionary<string, Action<string, Object>> menuRegistrator = new Dictionary<string, Action<string, Object>>();
-        private Interface()
+        private InterfaceAPI()
         {
             
         }
