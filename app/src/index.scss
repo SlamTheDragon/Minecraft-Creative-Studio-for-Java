@@ -29,7 +29,7 @@ $font-size-emphasis: 14px;
 }
 
 // # FUNCTIONAL
-@mixin absolute-pos($top, $left, $bottom, $right) {
+@mixin inset($top, $left, $bottom, $right) {
 	top: $top;
 	left: $left;
 	bottom: $bottom;
@@ -108,6 +108,11 @@ $font-size-emphasis: 14px;
 	align-items: center;
 }
 
+@mixin hard-dimension {
+    @include wight(100vw, 100vh);
+    overflow: hidden;
+}
+
 // # COMPONENT STYLES
 @mixin btn {
 	@include mard(3px 8px, 5.5px 15px);
@@ -143,6 +148,12 @@ $font-size-emphasis: 14px;
 
 	border-radius: 2px;
 	background-color: $background-accent;
+}
+
+@mixin panel {
+    border: 0.7px solid $color-secondary;
+    border-radius: $border-radius;
+    background-color: $background;
 }
 
 // ==========================
@@ -240,12 +251,6 @@ $font-size-emphasis: 14px;
 	color: $color-permanent;
 }
 
-.panel {
-	margin: unset;
-	top: 0;
-	left: 0;
-}
-
 // # Content Breakers | Dividers
 .divider {
 	@include mard(10px, 0.5px);
@@ -315,6 +320,10 @@ $font-size-emphasis: 14px;
 		filter: none;
 		opacity: 0.5;
 	}
+}
+
+#root {
+    @include hard-dimension();
 }
 
 h1 {

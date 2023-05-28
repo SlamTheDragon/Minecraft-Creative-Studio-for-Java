@@ -1,7 +1,7 @@
 @import "../../../index.scss";
 
 .modal {
-    @include absolute-pos(0, 0, 0, 0);
+    @include inset(0, 0, 0, 0);
     @include flex-center;
     position: fixed;
     pointer-events: all;

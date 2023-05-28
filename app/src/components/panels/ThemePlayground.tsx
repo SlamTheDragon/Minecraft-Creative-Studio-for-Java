@@ -1,21 +1,12 @@
 import { useState } from "react";
 import { ReactComponent as Settings } from '@material-design-icons/svg/filled/settings.svg';
-import { ReactComponent as Home } from '@material-design-icons/svg/filled/home.svg';
 import { ReactComponent as Info } from '@material-design-icons/svg/outlined/info.svg';
-import { useNavigate } from "react-router-dom";
 import Button from "../common/Button/Button";
 import ThemeSwitcher from "../custom/ThemeSwitcher/ThemeSwitcher";
 import Modal from "../common/Modal/Modal";
 
 
 export default function ThemePlayground() {
-
-    const history = useNavigate();
-
-    let handleClick = () => {
-        history('/');
-    };
-
     const [showModal, setShowModal] = useState(false);
     // Open Modal
     function openModal() {
@@ -202,7 +193,6 @@ export default function ThemePlayground() {
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
                         <ThemeSwitcher />
                         <Button classItem={'btn-b'} onclick={openModal} ><Settings /></Button>
-                        <Button classItem={"btn-b"} onclick={handleClick} ><Home /></Button>
                     </div>
                     <div style={{ display: "flex", flexDirection: "row", justifyContent: "flex-start", alignItems: "center" }}>
                         <Button classItem={"btn-b"}><Info /></Button>

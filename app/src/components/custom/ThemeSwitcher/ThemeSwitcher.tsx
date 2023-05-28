@@ -6,7 +6,7 @@ import Button from '../../common/Button/Button';
 export default function ThemeSwitcher() {
     const [theme, setTheme] = useState(() => {
         const localThemeValue = window.localStorage.getItem("theme");
-        return localThemeValue !== null ? localThemeValue : null;
+        return localThemeValue ?? null;
     });
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function ThemeSwitcher() {
     }, []);
 
     const toggleTheme = () => {
-        const newTheme = theme === 'light' ? 'dark' : 'light';
+        const newTheme = theme === 'dark' ? 'light' : 'dark';
         setTheme(newTheme);
 
         window.localStorage.setItem("theme", newTheme);

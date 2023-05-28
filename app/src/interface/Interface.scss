@@ -1,6 +1,114 @@
-@import '../index.scss';
+@import "../index.scss";
 
-.viewport {
+.interface {
     @include wight(100%, 97.2vh);
     background-color: $background;
-}   
+
+    @include hard-dimension();
+
+    .i-floatier {
+        z-index: 1000;
+    }
+
+    .i-content {
+        @include wight(100%, 100%);
+    }
+}
+
+.f,
+.d {
+    @include panel();
+    overflow: hidden;
+}
+
+.f {
+    @include shadow;
+    position: absolute;
+
+    .resizable-top,
+    .resizable-mid,
+    .resizable-bottom {
+        overflow: visible;
+        display: flex;
+    }
+
+    .resizable-top,
+    .resizable-bottom {
+        @include wight(100%, 0);
+    }
+
+    .resizable-mid {
+        // height: 0px;
+        .container {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+    }
+
+    .draggable {
+        background-color: $color-permanent-secondary;
+        padding: 6px;
+        position: relative;
+        // top: -10px;
+    }
+
+    .handle {
+        padding: 2.5px;
+        // border: 1px dashed orange;
+        position: relative;
+    }
+
+    .top {
+        width: 100%;
+
+        cursor: ns-resize;
+        inset: -15px 0px;
+    }
+
+    .top-right {
+        cursor: nesw-resize;
+        transform: scale(2.5, 2.5);
+        inset: -15px 4px;
+    }
+
+    .right {
+        cursor: ew-resize;
+        inset: 0px 3px;
+    }
+
+    .bottom-right {
+        cursor: nwse-resize;
+        transform: scale(2.5, 2.5);
+        inset: 0px 4px;
+    }
+
+    .bottom {
+        width: 100%;
+
+        cursor: ns-resize;
+        inset: 0px 0px;
+    }
+
+    .bottom-left {
+        cursor: nesw-resize;
+        transform: scale(2.5, 2.5);
+        inset: 0px -4px;
+    }
+
+    .left {
+        cursor: ew-resize;
+        inset: 0px -3px;
+    }
+
+    .top-left {
+        cursor: nwse-resize;
+        transform: scale(2.5, 2.5);
+        inset: -15px -4px;
+    }
+}
+
+.d {
+    @include wight(100%, 100%);
+    position: initial;
+}
