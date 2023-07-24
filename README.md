@@ -1,4 +1,4 @@
-# Minecraft Creative Studio for Java
+# Minecraft Creative Studio for Minecraft: Java Edition
 
 Minecraft Creative Studio (MCS/MCSJava) is a free, open-source 3D world-editing program designed exclusively for Minecraft Java Edition. It includes a range of features to help Minecraft builders, designers, animators, and others. This Minecraft Creative Editor takes inspiration from [Minecraft Bedrock's Editor](https://learn.microsoft.com/en-us/minecraft/creator/documents/editorinstallation) and aims to provide expandable tools that offer more creative freedom and opportunities to creators, speeding up their workflows.
 
