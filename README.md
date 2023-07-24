@@ -6,44 +6,31 @@ Minecraft Creative Studio aims to include the best features and tools developed 
 
 ## This Desktop Application is Still in its Predevelopment Stage
 
-This is a passion project made by [SlamTheDragon](https://github.com/SlamTheDragon) **APP REWRITE IN PROGRESS**
+This is a passion project made by [SlamTheDragon](https://github.com/SlamTheDragon)
 
 - This project is not being actively developed and is being updated from time to time. Feel free to check out this repository's [discussions](https://github.com/SlamTheDragon/Minecraft-Creative-Studio-for-Java/discussions) tab for more information about the project.
+
     > The project author does not have enough skillset to properly develop this desktop application smoothly as what he have envisioned before [Minecraft Preview Editor](https://learn.microsoft.com/en-us/minecraft/creator/documents/editorinstallation) came out. If you wish to contribute to this project feel free to open any issues or pull requests or Join us with the discussion in this repository's [discussions](https://github.com/SlamTheDragon/Minecraft-Creative-Studio-for-Java/discussions) tab.
 
-## ~~Getting Started with the Development~~
+## Getting Started with the Development
 
-~~This project mainly needs [`.NET 6.0.408 SDK`](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and the latest [`Node.JS`](https://nodejs.org/en) installed in order to get started.~~
+This project runs on [`.NET 6 SDK`](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) and the latest [`Node.JS`](https://nodejs.org/en) installed in order to get started.
 
-### ~~Install the following ASP.NET Core Project Dependencies~~
+### Install Node Dependencies
 
-~~- [ElectronNET.API](https://github.com/ElectronNET/Electron.NET)~~
-~~- [ElectronNET CLI](https://www.nuget.org/packages/ElectronNET.CLI)~~
+Here are the required dependencies you may need in development:
 
-~~    You can also use Visual Studio 2022 to install the other installed packages automatically.~~
+- [NeutralinoJS](https://neutralino.js.org/docs/getting-started/your-first-neutralinojs-app)
 
-### ~~Install npm packages~~
+  ```bash
+  npm install -g @neutralinojs/neu
+  ```
 
-~~navigate to the `app` directory of the project and enter the following:~~
+navigate to the `app/react` directory of the project and enter the following:
 
 ```bash
 npm i
 ```
-
-## ~~Usage~~
-
-- ~~Here are the useful commands you can use for development in order to get started:~~
-
-    ```bash
-    # Start only for the application's front-end (you have to be inside the "app" folder to use this command)
-    $ npm start
-
-    # compile and launch the application as a Desktop Application
-    $ electronize start
-
-    # wrap the project for deployment
-    $ electronize build 
-    ```
 
 ## Contribution & Support
 

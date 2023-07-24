@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ErrorReport>send</ErrorReport>
+    <ConcurrentGarbageCollection>true</ConcurrentGarbageCollection>
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+    <!-- <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable> -->
+    <!-- Add a property for the root directory -->
+    <RootDir>$(MSBuildProjectDirectory)\</RootDir>
+  </PropertyGroup>
+
+  <!-- Uncomment when building -->
+  <!-- <Target Name="1-buildReact" BeforeTargets="Build">
+    <Exec Command="echo Build React front-end" />
+    <Exec Command="npm run build" WorkingDirectory="$(RootDir)app\react" />
+  </Target>
+
+  <Target Name="2-buildDesktopWrapper" AfterTargets="1-buildReact">
+    <Exec Command="echo Build Neutralinojs Wrapper" />
+    <Exec Command="neu build" WorkingDirectory="$(RootDir)app\" />
+  </Target>
+
+  <Target Name="3-PackageApp" AfterTargets="2-buildDesktopWrapper">
+    <Exec Command="echo Packing Backend Wrapper..." />
+  </Target> -->
+
+  <!-- Add a custom target to copy app\dist and app\react\build after the main build -->
+  <ItemGroup>
+    <Content Include="app\dist\MCSJv0.0.1\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="app\react\build\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>
