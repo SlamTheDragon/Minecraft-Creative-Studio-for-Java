@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/minecraft-creative-studio-for-java.csproj",
+                "${workspaceFolder}/MCSJRewrite/MCSJRewrite.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/minecraft-creative-studio-for-java.csproj",
+                "${workspaceFolder}/MCSJRewrite/MCSJRewrite.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -33,7 +33,7 @@
                 "watch",
                 "run",
                 "--project",
-                "${workspaceFolder}/minecraft-creative-studio-for-java.csproj"
+                "${workspaceFolder}/MCSJRewrite/MCSJRewrite.csproj"
             ],
             "problemMatcher": "$msCompile"
         }
