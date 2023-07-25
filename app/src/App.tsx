@@ -1,3 +1,4 @@
+import electron from 'electron';
 import { useState, useEffect } from "react";
 import { imageFiles } from "./utils/imagesFiles";
 import { soundEffectFiles } from "./utils/sfxFiles";
@@ -6,7 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { closeModal, modalState } from "./components/slice/modal-slices/modalSlice";
 import { readHeader } from "./components/slice/modal-slices/modalHeaderSlice";
 import { readModalInterface } from "./components/slice/modal-slices/modalInterfaceSlice";
-import { filesystem } from "@neutralinojs/lib"
 import Interface from "./components/.Interface/Interface";
 import Modal from "./components/common/Modal";
 import Sample1 from "./components/widgets/modal-contents/SsampleContentA";
@@ -24,16 +24,7 @@ function App() {
 		if (theme !== null) {
 			document.documentElement.setAttribute('data-theme', theme);
 		}
-	}, []);
-
-	// Log current directory or error after component is mounted
-	useEffect(() => {
-		filesystem.readDirectory('./').then((data) => {
-			console.log(data)
-		}).catch((err) => {
-			console.log(err)
-		})
-	}, [])
+	}, [theme]);
 
 	useEffect(() => {
 		const images = Object.values(imageFiles)

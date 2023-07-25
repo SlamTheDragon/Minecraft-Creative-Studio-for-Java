@@ -28,13 +28,9 @@
   </Target> -->
 
   <!-- Add a custom target to copy app\dist and app\react\build after the main build -->
-  <ItemGroup>
-    <Content Include="app\dist\MCSJv0.0.1\**\*">
+  <!-- <ItemGroup>
+    <Content Include="app\out\**\*">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="app\react\build\**\*">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
+  </ItemGroup> -->
 </Project>
