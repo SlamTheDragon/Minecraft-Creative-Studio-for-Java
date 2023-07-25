@@ -1,0 +1,110 @@
+// # [GLOBALIZED VARIABLES]
+
+// text colors
+$color: var(--color);
+$color-secondary: var(--color-secondary);
+$color-accent: var(--color-accent);
+$color-permanent: var(--color-permanent);
+$color-permanent-secondary: var(--color-permanent-secondary);
+
+// accent colors
+$primary: var(--primary-color);
+$primary-accent: var(--primary-accent);
+
+$secondary: var(--secondary-color);
+$secondary-accent: var(--secondary-accent);
+
+$info: var(--info);
+$warn: var(--warn);
+$danger: var(--danger);
+$success: var(--success);
+
+// background colors
+$background-color: var(--background);
+$background-accent: var(--background-accent);
+$background-secondary: var(--background-secondary);
+$background-secondary-accent: var(--background-secondary-accent);
+
+// miscellaneous
+$shadow-color: var(--shadow-color);
+
+$scroll-thumb: var(--scroll-thumb);
+$scroll-bg: var(--scroll-bg);
+$scroll-bg-hover: var(--scroll-bg-hover);
+
+$shadow-color: var(--shadow-color);
+$hover-brightness-light: var(--hover-brightness-light);
+$hover-brightness-dark: var(--hover-brightness-dark);
+
+// # [BASE THEME]
+:root {
+    // text colors
+    --color: #000000;
+    --color-secondary: #ffffff;
+    --color-accent: #2d2d2d;
+    --color-permanent: #ffffff;
+    --color-permanent-secondary: #00000087;
+
+    // accent colors
+    --primary-color: #008542;
+    --primary-accent: #008542;
+
+    --secondary-color: #008542;
+    --secondary-accent: #008542;
+
+    --info: #438966;
+    --warn: #ff8c00;
+    --danger: #d93636;
+    --success: #9ec6c7;
+
+    // background colors
+    --background: #ffffff;
+    --background-accent: #e1eee6;
+    --background-secondary: #0e0e0e;
+    --background-secondary-accent: #000000;
+
+    // miscellaneous
+    --shadow-color: #000000;
+
+    --scroll-thumb: #929c96;
+    --scroll-bg: #ffffff00;
+    --scroll-bg-hover: #ffffff;
+
+    --shadow-color: #000000;
+    --hover-brightness-light: brightness(110%);
+    --hover-brightness-dark: brightness(97%);
+}
+
+// # [OTHER THEMES]
+[data-theme="dark"] {
+    // text colors
+    --color: #ffffff;
+    --color-secondary: #000000;
+    --color-accent: #cccccc;
+
+    // accent colors
+    --primary-color: #008542;
+    --primary-accent: #008542;
+
+    --secondary-color: #008542;
+    --secondary-accent: #008542;
+
+    --info: #2b5842;
+    --warn: #d88e32;
+    --danger: #d93636;
+    --success: #3f6378;
+
+    // background colors
+    --background: #1e1e1e;
+    --background-accent: #333333;
+    --background-secondary: #0e0e0e;
+    --background-secondary-accent: #000000;
+
+    // miscellaneous
+    --scroll-thumb: #515151;
+    --scroll-bg: #262626;
+    --scroll-bg-hover: #262626;
+
+    --hover-brightness-light: brightness(140%);
+    --hover-brightness-dark: brightness(110%);
+}

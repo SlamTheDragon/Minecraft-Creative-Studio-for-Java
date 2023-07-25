@@ -1,0 +1,67 @@
+{
+  "name": "minecraft-creative-studio-front",
+  "version": "1.0.0",
+  "main": "src/main.js",
+  "description": "UI front-end of MCSJ App",
+  "author": "SlamTheDragon",
+  "license": "GNU GPLv3",
+  "private": true,
+  "dependencies": {
+    "@neutralinojs/lib": "^3.8.2",
+    "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
+    "@types/react-redux": "^7.1.25",
+    "electron-squirrel-startup": "^1.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.1.1",
+    "react-scripts": "5.0.1",
+    "redux": "^4.2.1",
+    "sass": "^1.62.1",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "deploy": "react-scripts build",
+    ".": "set ELECTRON_START_URL=http://localhost:3000 && electron .",
+    "make": "electron-forge make",
+    "package": "electron-forge package"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.2.1",
+    "@electron-forge/maker-deb": "^6.2.1",
+    "@electron-forge/maker-rpm": "^6.2.1",
+    "@electron-forge/maker-squirrel": "^6.2.1",
+    "@electron-forge/maker-zip": "^6.2.1",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.2.1",
+    "@testing-library/react": "^14.0.0",
+    "@types/node": "^20.4.4",
+    "electron": "^25.3.1"
+  }
+}

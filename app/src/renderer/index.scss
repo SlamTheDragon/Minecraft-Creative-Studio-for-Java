@@ -1,0 +1,247 @@
+@import "./theme/theme.scss";
+
+// # [VARIABLES]
+$global-border-radius: 10px;
+$box-shadow-values: 0px 10px 5px -13px;
+
+// # [MIXINS]
+
+@mixin wight($w, $h) {
+	width: $w;
+	height: $h;
+}
+
+@mixin mar-pad($m, $p) {
+	margin: $m;
+	padding: $p;
+}
+
+@mixin flex-center {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@mixin uni-select($toggle: true) {
+	@if $toggle {
+		user-select: text; // Standard syntax
+		-ms-user-select: text; // IE 10 and IE 11
+		-webkit-user-select: text; // Safari
+	} @else {
+		user-select: none;
+		-ms-user-select: none;
+		-webkit-user-select: none;
+	}
+}
+
+@mixin shadow {
+	box-shadow: $box-shadow-values $shadow-color;
+	-webkit-box-shadow: $box-shadow-values $shadow-color;
+	-moz-box-shadow: $box-shadow-values $shadow-color;
+}
+
+@mixin focus-style {
+	&:focus,
+	&:focus-within {
+		outline: none;
+	}
+
+	&:focus-visible {
+		outline: 3px solid $primary;
+		outline-offset: 3px;
+		transition: none;
+	}
+}
+
+// # [COMPONENT MIXINS]
+
+@mixin btn {
+	@include shadow;
+	@include wight(unset, 38px);
+	@include mar-pad(unset, 0 15px);
+	@include focus-style;
+	@include flex-center();
+
+	// extract or create a new default color for buttons
+	border: none;
+	border-radius: $global-border-radius;
+	background-color: $primary;
+	color: $color;
+	fill: $color;
+	font-size: 14px;
+	text-decoration: none;
+	cursor: pointer;
+
+	&:hover {
+		background-color: $primary;
+		filter: brightness(95%);
+	}
+
+	&:active {
+		background-color: $primary;
+		filter: brightness(110%);
+	}
+}
+
+// # [COMPONENTS]
+
+// --[ MAIN ]--
+.interface {
+	@include wight(100vw, 100vh);
+}
+
+// --[ STATUSBAR ]--
+
+.status-bar {
+	@include wight(100%, 23px);
+
+	background-color: $background-accent;
+
+	position: fixed;
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+// --[ BUTTON ]--
+
+.btn {
+	@include btn();
+}
+
+.primary {
+	background-color: $primary;
+}
+
+.secondary {
+	background-color: $secondary;
+}
+
+.success {
+	background-color: $success;
+}
+
+.info {
+	background-color: $info;
+}
+
+.warn {
+	background-color: $warn;
+}
+
+.danger {
+	background-color: $danger;
+}
+
+// --[ MODAL ]--
+
+$_internal-padding: 15px;
+
+.modal {
+	@include flex-center;
+
+	inset: 0;
+	position: fixed;
+	pointer-events: all;
+	z-index: 8000;
+
+	.modal-wrapper {
+		@include mar-pad(0, 0);
+
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+		max-width: 500px;
+		border-radius: $global-border-radius;
+		border: $color 1px solid;
+		background-color: $background-color;
+		z-index: 1000;
+		cursor: default;
+
+		// add format here for header or whatever
+		.modal-header {
+			@include flex-center;
+			padding: $_internal-padding;
+			justify-content: space-between;
+			border-bottom: $color 1px solid;
+
+			h3 {
+				margin: 0;
+			}
+
+			button {
+				@include wight(38px, 38px);
+				display: inline-flex;
+				border: none;
+				color: $color;
+				background-color: transparent;
+
+				pointer-events: all;
+				cursor: pointer;
+			}
+		}
+		.modal-container {
+			padding: $_internal-padding;
+		}
+		.modal-action {
+			display: flex;
+			flex-direction: row;
+			justify-content: end;
+			padding: $_internal-padding;
+			border-top: $color 1px solid;
+			gap: 10px;
+		}
+	}
+
+	.modal-background {
+		@include flex-center;
+		@include wight(100vw, 100vh);
+
+		position: absolute;
+		background-color: $shadow-color;
+		filter: opacity(0.5);
+	}
+}
+
+// # [ROOT]
+
+html,
+body {
+	@include uni-select(false);
+	@include mar-pad(0, 0);
+	@include wight(100vw, 100vh);
+
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+	font-size: small;
+	text-rendering: optimizeSpeed;
+
+	color: $color;
+	background-color: $background-color;
+	overflow: hidden;
+	touch-action: none;
+}
+
+// TODO: fix in the future
+// a {
+// 	@include focus-style();
+
+// 	text-decoration: none;
+// 	font-weight: bold;
+// 	color: $color;
+
+// 	&:hover {
+// 		color: $primary;
+// 		filter: brightness(95%);
+// 	}
+
+// 	&:active {
+// 		color: $primary;
+// 		filter: brightness(110%);
+// 	}
+// }
