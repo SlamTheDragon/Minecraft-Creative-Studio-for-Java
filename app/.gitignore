@@ -1,14 +1,24 @@
-# Developer tools' files
-.lite_workspace.lua
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# Neutralinojs binaries and builds
-/bin
-/dist
-/.tmp
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
 
-# Neutralinojs client (minified)
-neutralino.js
+# testing
+/coverage
 
-# Neutralinojs related files
-.storage
-*.log
+# production
+/build
+/out
+
+# misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
