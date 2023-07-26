@@ -2,7 +2,10 @@ import { useSelector, useDispatch } from 'react-redux'
 import { themeID } from '../slice/theme-slices/themeSlice';
 import { useModalOperation } from '../../utils/component-utils/modalOperation';
 import StatusBar from '../common/StatusBar';
-import PanelWrapper from '../common/PanelWrapper';
+import DockWrapper from '../common/DockWrapper';
+import Button from '../common/Button';
+import TestPanel from '../widgets/panel-docking/panels/TestPanel';
+import TestPanel2 from '../widgets/panel-docking/panels/TestPanel2';
 
 /**
  * This is your main interface, all components shall pass through here
@@ -18,7 +21,10 @@ export default function Interface() {
 
     return (
         <div className="interface">
-            <PanelWrapper/>
+            <DockWrapper>
+                <TestPanel/>
+                <TestPanel2/>
+            </DockWrapper>
             <StatusBar/>
         </div>
     );

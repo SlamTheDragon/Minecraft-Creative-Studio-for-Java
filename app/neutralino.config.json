@@ -1,5 +1,5 @@
 {
-	"applicationId": "js.neutralino.mcsfront",
+	"applicationId": "com.mcs.front",
 	"version": "0.0.1",
 	"defaultMode": "window",
 	"documentRoot": "/react/build/",
@@ -11,13 +11,21 @@
 		"filesystem.readDirectory"
 	],
 	"modes": {
+		"chrome": {
+			"width": 1280,
+			"height": 700,
+			"args": "--disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-breakpad --disable-client-side-phishing-detection --disable-default-apps --disable-dev-shm-usage --disable-infobars --disable-extensions --disable-features=site-per-process --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --disable-sync --disable-translate --metrics-recording-only --no-first-run --no-default-browser-check --safebrowsing-disable-auto-update --password-store=basic --use-mock-keychain"
+		},
 		"window": {
 			"title": "Minecraft Creative Studio",
 			"width": 1280,
-			"height": 680,
+			"height": 700,
 			"minWidth": 1280,
-			"minHeight": 680,
-			"icon": "/react/public/favicon.ico"
+			"minHeight": 700,
+			"center": true,
+			"icon": "/react/public/favicon.ico",
+			"enableInspector": true,
+			"exitProcessOnClose": true
 		}
 	},
 	"cli": {

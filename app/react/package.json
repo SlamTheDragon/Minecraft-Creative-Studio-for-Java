@@ -1,6 +1,7 @@
 {
   "name": "minecraft-creative-studio-front",
   "version": "0.0.1",
+  "main": "react/src/main/main.ts",
   "private": true,
   "dependencies": {
     "@neutralinojs/lib": "^3.8.2",

@@ -2,6 +2,24 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "command": "cd app && neu run --frontend-lib-dev && exit",
+            "name": "Run Neutralino Dev + Web",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "cd app/react && npm run build && cd .. && neu run && exit",
+            "name": "Run Neutralino Native",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
+            "command": "cd app/react && npm start",
+            "name": "Run as web",
+            "request": "launch",
+            "type": "node-terminal"
+        },
+        {
             // Use IntelliSense to find out which attributes exist for C# debugging
             // Use hover for the description of the existing attributes
             // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
